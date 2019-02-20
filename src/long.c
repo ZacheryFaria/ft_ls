@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 13:11:34 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:18:12 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	longflag(char *path)
 	/* Unix file types, */
 	long_filetypes(path);
 	/* permissions, */
+	long_permissions(path);
 	/* number of hard links, */
 	/* owner, */
 	/* group, */
