@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/19 14:38:08 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 11:51:35 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include <libft.h>
 # include <dirent.h>
+
+int		recursive;
+int		reverse;
+int		show_hidden;
+int		sort_time;
+int		long_format;
+
 
 int		dir_size(char *dirs);
 char	**get_files(char *dirs);
