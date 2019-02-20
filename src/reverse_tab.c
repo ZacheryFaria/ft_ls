@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_tab.c                                         :+:      :+:    :+:   */
+/*   reverse_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/19 14:25:00 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 12:59:20 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/20 12:52:12 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/20 13:01:01 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2))
+char	**reverse_tab(char **tab)
 {
-	char	*last;
-	int 	sorted;
 	int		i;
+	int		j;
+	char	*tmp;
 
-	sorted = 0;
-	while (!sorted)
+	j = 0;
+	i = 0;
+	while (tab[i])
+		i++;
+	i--;
+	while (j < i / 2)
 	{
-		sorted = 1;
-		i = 0;
-		while (tab[i + 1])
-		{
-			if (cmp(tab[i], tab[i + 1]) > 0)
-			{
-				last = tab[i];
-				tab[i] = tab[i + 1];
-				tab[i + 1] = last;
-				sorted = 0;
-			}
-			i++;
-		}
+		tmp = tab[i - j];
+		tab[i - j] = tab[j];
+		tab[j] = tmp;
+		j++;
 	}
 	return (tab);
 }
