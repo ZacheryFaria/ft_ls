@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long.c                                             :+:      :+:    :+:   */
+/*   long_hardlinks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 13:27:44 by awindham         ###   ########.fr       */
+/*   Created: 2019/02/20 13:28:01 by awindham          #+#    #+#             */
+/*   Updated: 2019/02/20 13:30:54 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_ls.h>
+#include <libft.h>
 
-void	longflag(char *path)
+void	long_hardlinks(path)
 {
-	/* Unix file types, */
-	long_filetypes(path);
-	/* permissions, */
-	long_permissions(path);
-	/* number of hard links, */
-	long_hardlinks(path);
-	/* owner, */
-	/* group, */
-	/* size, */
-	/* last-modified date, */
-	/* filename */
+	ft_putchar('1');
 }

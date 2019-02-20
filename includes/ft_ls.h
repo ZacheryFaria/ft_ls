@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 13:23:36 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 13:31:23 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 
+# include <libft.h>
 # include <dirent.h>
 
-int	recursive;
-int	reverse;
-int	show_hidden;
-int	sort_time;
-int	long_format;
+extern int		recursive;
+extern int		reverse;
+extern int		show_hidden;
+extern int		sort_time;
+extern int		long_format;
 
 
 int		dir_size(char *dirs);
@@ -31,7 +32,6 @@ char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
 
 void	longflag(char *path);
 void	long_filetypes(const char *path);
-void	long_permissions(const char *path);
-
+void	long_hardlinks(path);
 
 #endif
