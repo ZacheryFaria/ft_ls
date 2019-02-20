@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Werror -Wextra -Wall -std=c89 -I libft/includes -I include
+CFLAGS=-Werror -Wextra -Wall -g -I libft/includes -I includes
 LIBFLAGS=-L libft/ -lft
 NAME=ft_ls
 SRC=$(wildcard src/*)
@@ -12,6 +12,7 @@ VPATH = src obj libft/includes include
 $(NAME): $(OBJ)
 	@make -C libft
 	@$(CC) -o $(NAME) obj/* $(LIBFLAGS)
+	@echo "ft_ls build complete!"
 
 all: $(NAME)
 
