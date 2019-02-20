@@ -10,7 +10,7 @@ OBJ=$(SRC:src/%.c=%.o)
 VPATH = src obj libft/includes include
 
 $(NAME): $(OBJ)
-	git submodule update --init --recursive
+	git submodule update --recursive --remote
 	@make -C libft
 	@$(CC) -o $(NAME) obj/* $(LIBFLAGS)
 	@echo "ft_ls build complete!"
