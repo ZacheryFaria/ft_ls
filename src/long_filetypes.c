@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   long_filetypes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 13:11:17 by awindham         ###   ########.fr       */
+/*   Created: 2019/02/20 13:04:40 by awindham          #+#    #+#             */
+/*   Updated: 2019/02/20 13:11:48 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LS_H
-# define FT_LS_H
+#include <libft.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <stdlib.h>
 
-# include <libft.h>
-# include <dirent.h>
-
-int		recursive;
-int		reverse;
-int		show_hidden;
-int		sort_time;
-int		long_format;
-
-
-int		dir_size(char *dirs);
-char	**get_files(char *dirs);
-char	**filter_default(char **files);
-char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
-
-void	longflag(char *path);
-void	long_filetypes(const char *path);
-
-
-#endif
+void	long_filetypes(const char *path)
+{
+	struct stat st;
+	if (stat(path, &st) < 0)
+		exit(-1);
+	if ((S_ISDIR(st.st_mode)))
+		ft_putchar('d');
+	else
+		ft_putchar('-');
+}
