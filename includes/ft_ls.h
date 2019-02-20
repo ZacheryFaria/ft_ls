@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 13:31:23 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:39:36 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
 
 void	longflag(char *path);
 void	long_filetypes(const char *path);
-void	long_hardlinks(path);
+void	long_permissions(const char *path);
+void	long_hardlinks(const char *path);
+void	long_owner(const char *path);
 
 #endif

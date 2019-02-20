@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_hardlinks.c                                   :+:      :+:    :+:   */
+/*   long_owner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:28:01 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 13:40:07 by awindham         ###   ########.fr       */
+/*   Created: 2019/02/20 13:37:44 by awindham          #+#    #+#             */
+/*   Updated: 2019/02/20 13:42:09 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <sys/stat.h>
-#include <stdlib.h>
+#include <libft.h>
+#include <pwd.h>
 
-void	long_hardlinks(char *path)
+void	long_owner(char *path)
 {
 	struct stat st;
-	if ((stat(path, &st)) < 0)
-		exit(-1);
-	ft_putnbr(st.st_ino);
+	
+	stat(path, &st);
+	ft_putstr(getpwuid(st.st_uid)->pw_name);
 }

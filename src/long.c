@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 13:27:44 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:37:34 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	longflag(char *path)
 	/* number of hard links, */
 	long_hardlinks(path);
 	/* owner, */
+	long_owner(path);
 	/* group, */
 	/* size, */
 	/* last-modified date, */
