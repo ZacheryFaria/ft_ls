@@ -12,3 +12,4 @@ a.out
 .vscode/
 libft.a
 ft_ls
+*.dSYM/
