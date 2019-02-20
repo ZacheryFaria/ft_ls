@@ -16,6 +16,12 @@
 #include <ft_ls.h>
 #include <sys/stat.h>
 
+int long_format = 0;
+int recursive = 0;
+int show_hidden = 0;
+int sort_time = 0;
+int reverse = 0;
+
 void	parse_flag(char *str)
 {
 	if (*str == 'R')
@@ -52,7 +58,7 @@ void	format_list(char **list)
 {
 	if (!show_hidden)
 		list = flag_hide(list);
-	if (!reverse)
+	if (reverse)
 		list = reverse_tab(list);
 }
 
@@ -70,7 +76,6 @@ int main(int argc, char **argv)
 	}
 	char **list = get_files(dir);
 	list = sort_tab(list, ft_strcmp);
-	reverse_tab(list);
 	format_list(list);
 	while (*list)
 	{

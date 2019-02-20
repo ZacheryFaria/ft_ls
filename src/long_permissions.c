@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   long_permissions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:16:00 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 13:18:00 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:20:01 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <libft.h>
 
 void	long_permissions(const char *path)
 {
