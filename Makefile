@@ -4,13 +4,13 @@ LIBFLAGS=-L libft/ -lft
 NAME=ft_ls
 SRC=$(wildcard src/*)
 OBJ=$(SRC:src/%.c=%.o)
+SHELL := /bin/bash
 
 .PHONY: clean fclean all re norm norme debug test
 
 VPATH = src obj libft/includes include
 
-$(NAME): $(OBJ)
-	git submodule update --recursive --remote
+$(NAME): update $(OBJ)
 	@make -C libft
 	@$(CC) -o $(NAME) obj/* $(LIBFLAGS)
 	@echo "ft_ls build complete!"
@@ -30,8 +30,11 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
-	
+
 norm:
 	norminette src/. include/.
+
+update:
+	@./update.sh
 
 norme: norm
