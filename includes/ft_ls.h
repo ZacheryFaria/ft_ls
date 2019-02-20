@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 13:49:12 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 14:49:07 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ void	long_filetypes(const char *path);
 void	long_permissions(const char *path);
 void	long_hardlinks(const char *path);
 void	long_owner(const char *path);
+void	long_group(const char *path);
+void	long_size(const char *path);
+void	long_lastmod(const char *path);
 
 #endif

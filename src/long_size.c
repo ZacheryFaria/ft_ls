@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long.c                                             :+:      :+:    :+:   */
+/*   long_size.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 14:57:52 by awindham         ###   ########.fr       */
+/*   Created: 2019/02/20 14:47:19 by awindham          #+#    #+#             */
+/*   Updated: 2019/02/20 14:48:15 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_ls.h>
+#include <sys/stat.h>
+#include <libft.h>
 
-void	longflag(char *path)
+void	long_size(const char *path)
 {
-	/* Unix file types, */
-	long_filetypes(path);
-	/* permissions, */
-	long_permissions(path);
-	/* number of hard links, */
-	long_hardlinks(path);
-	/* owner, */
-	long_owner(path);
-	/* group, */
-	long_group(path);
-	/* size, */
-	long_size(path);
-	/* last-modified date, */
-	long_lastmod(path);
+	struct stat st;
+
+	stat(path, &st);
+	ft_putnbr(st.st_size);
 }
