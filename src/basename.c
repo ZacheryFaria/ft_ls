@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:05:04 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:06:06 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 15:31:51 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char	*basename(char *s)
 {
 	char *p;
 	
-	if((p = strrchr(s, '/')) == 0)
+	if ((p = strrchr(s, '/')) == 0)
 		p = s;
-	if(*p == '/')
+	if (*p == '/')
 		p++;
-	return p;
+	return (p);
 }

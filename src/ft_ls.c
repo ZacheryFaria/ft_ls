@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                             :+:      :+:    :+:   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/13 15:15:54 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/15 13:39:22 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/20 15:30:40 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include <libft.h>
 #include <dirent.h>
@@ -17,24 +18,24 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 
-int long_format = 0;
-int recursive = 0;
-int show_hidden = 0;
-int sort_time = 0;
-int reverse = 0;
+int g_long_format = 0;
+int g_recursive = 0;
+int g_show_hidden = 0;
+int g_sort_time = 0;
+int g_reverse = 0;
 
 void	parse_flag(char *str)
 {
 	if (*str == 'R')
-		recursive = 1;
+		g_recursive = 1;
 	if (*str == 'r')
-		reverse = 1;
+		g_reverse = 1;
 	if (*str == 'l')
-		long_format = 1;
+		g_long_format = 1;
 	if (*str == 'a')
-		show_hidden = 1;
+		g_show_hidden = 1;
 	if (*str == 't')
-		sort_time = 1;
+		g_sort_time = 1;
 	str += 1;
 	if (*str)
 		parse_flag(str);
@@ -50,7 +51,7 @@ void	parse_args(int argc, char **argv)
 		if (argv[i][0] == '-')
 			parse_flag(argv[i] + 1);
 		else
-			break;
+			break ;
 		i++;
 	}
 }
@@ -58,7 +59,7 @@ void	parse_args(int argc, char **argv)
 char	**ls(char *path)
 {
 	DIR				*dir;
-	struct dirent	*entry;
+	struct	dirent	*entry;
 	char 			**list;
 	int				i;
 	int				len;
@@ -70,17 +71,17 @@ char	**ls(char *path)
 	while ((entry = readdir(dir)) != NULL)
 		list[i++] = ft_strjoin(path, entry->d_name);
 	list[len] = NULL;
-	free (entry);
-	free (dir);
+	free(entry);
+	free(dir);
 	return (list);
 }
 
 char	**format_list(char **list)
 {
-	if (!show_hidden)
+	if (!g_show_hidden)
 		list = flag_hide(list);
-	if (reverse)
-		list = reverse_tab(list);		
+	if (g_reverse)
+		list = reverse_tab(list);	
 	return (list);
 }
 
@@ -103,7 +104,7 @@ int main(int argc, char **argv)
 	list = format_list(list);
 	while (*list)
 	{
-		if (long_format)
+		if (g_long_format)
 		{
 			longflag(*list);
 			ft_printf("%s\n", basename(*list));

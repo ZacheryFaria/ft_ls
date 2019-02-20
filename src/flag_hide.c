@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:04:16 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:06:57 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 15:32:26 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	**flag_hide(char **str)
 {
 	char *base;
-	
+
 	while (*str)
 	{
 		base = basename(*str);
