@@ -85,4 +85,5 @@ int main(int argc, char **argv)
 		stat(*list, &buf);
 		list++;
 	}
+	longflag("./doc");
 }

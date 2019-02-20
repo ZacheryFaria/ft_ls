@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:28:01 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 13:40:07 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 13:46:09 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	long_hardlinks(char *path)
 	struct stat st;
 	if ((stat(path, &st)) < 0)
 		exit(-1);
-	ft_putnbr(st.st_ino);
+	ft_putnbr(st.st_nlink);
 }
