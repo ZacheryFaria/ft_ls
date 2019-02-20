@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 14:49:07 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 15:05:17 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	**get_files(char *dirs);
 char	**reverse_tab(char **tab);
 char	**flag_hide(char **str);
 char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
+char	*basename(char *s);
 
 void	longflag(char *path);
 void	long_filetypes(const char *path);

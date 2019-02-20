@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_hide.c                                        :+:      :+:    :+:   */
+/*   basename.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:04:16 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:06:57 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/20 15:05:04 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/20 15:06:06 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_ls.h>
+#include <libft.h>
 
-char	**flag_hide(char **str)
+char	*basename(char *s)
 {
-	char *base;
+	char *p;
 	
-	while (*str)
-	{
-		base = basename(*str);
-		if (*base == '.')
-			str++;
-		else
-			break ;
-	}
-	return (str);
+	if((p = strrchr(s, '/')) == 0)
+		p = s;
+	if(*p == '/')
+		p++;
+	return p;
 }

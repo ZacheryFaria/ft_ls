@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <ft_ls.h>
 #include <sys/stat.h>
+#include <stdlib.h>
 
 int long_format = 0;
 int recursive = 0;
@@ -54,12 +55,32 @@ void	parse_args(int argc, char **argv)
 	}
 }
 
+char	**ls(char *path)
+{
+	DIR				*dir;
+	struct dirent	*entry;
+	char 			**list;
+	int				i;
+	int				len;
+
+	i = 0;
+	dir = opendir(path);
+	len = dir_size(path);
+	list = malloc(sizeof(char *) * (len + 1));
+	while ((entry = readdir(dir)) != NULL)
+		list[i++] = ft_strjoin(path, entry->d_name);
+	list[len] = NULL;
+	free (entry);
+	free (dir);
+	return (list);
+}
+
 char	**format_list(char **list)
 {
 	if (!show_hidden)
 		list = flag_hide(list);
 	if (reverse)
-		list = reverse_tab(list);
+		list = reverse_tab(list);		
 	return (list);
 }
 
@@ -75,15 +96,20 @@ int main(int argc, char **argv)
 	{
 		dir = ".";
 	}
-	char **list = get_files(dir);
+	if (dir[ft_strlen(dir) - 1] != '/')
+		dir = ft_strjoin(dir, "/");
+	char **list = ls(dir);
 	list = sort_tab(list, ft_strcmp);
 	list = format_list(list);
 	while (*list)
 	{
-		printf("%s\n", *list);
-		struct stat buf;
-		stat(*list, &buf);
+		if (long_format)
+		{
+			longflag(*list);
+			ft_printf("%s\n", basename(*list));
+		}
+		else
+			printf("%s\n", basename(*list));	
 		list++;
 	}
-	longflag("./doc");
 }
