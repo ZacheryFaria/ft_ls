@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:04:16 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 13:11:56 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 13:30:52 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 char	**flag_hide(char **str)
 {
-	while (*str)
+	while (str)
 	{
 		if (**str == '.')
-			*str = 0;
-		str++;
+			str++;
+		else
+			break ;
 	}
 	return (str);
 }

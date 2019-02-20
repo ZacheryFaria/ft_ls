@@ -54,12 +54,13 @@ void	parse_args(int argc, char **argv)
 	}
 }
 
-void	format_list(char **list)
+char	**format_list(char **list)
 {
 	if (!show_hidden)
 		list = flag_hide(list);
 	if (reverse)
 		list = reverse_tab(list);
+	return (list);
 }
 
 int main(int argc, char **argv)
@@ -76,7 +77,7 @@ int main(int argc, char **argv)
 	}
 	char **list = get_files(dir);
 	list = sort_tab(list, ft_strcmp);
-	format_list(list);
+	list = format_list(list);
 	while (*list)
 	{
 		printf("%s\n", *list);
