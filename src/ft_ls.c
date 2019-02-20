@@ -48,17 +48,30 @@ void	parse_args(int argc, char **argv)
 	}
 }
 
+void	format_list(char **list)
+{
+	if (!show_hidden)
+		list = flag_hide(list);
+	if (!reverse)
+		list = reverse_tab(list);
+}
+
 int main(int argc, char **argv)
 {
+	char *dir = 0;
 	if (argc > 1)
 	{
 		parse_args(argc, argv);
+		dir = argv[argc - 1];
 	}
-
-	printf("R-%d, r-%d, t-%d, l-%d, a-%d\n", recursive, reverse, sort_time, long_format, show_hidden);
-
-	char **list = get_files(argv[argc - 1]);
+	else if (argc == 1)
+	{
+		dir = ".";
+	}
+	char **list = get_files(dir);
 	list = sort_tab(list, ft_strcmp);
+	reverse_tab(list);
+	format_list(list);
 	while (*list)
 	{
 		printf("%s\n", *list);
