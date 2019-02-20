@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:30:40 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 15:42:08 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	parse_flag(char *str)
 		parse_flag(str);
 }
 
-void	parse_args(int argc, char **argv)
+int		parse_args(int argc, char **argv)
 {
 	int i;
 
@@ -51,9 +51,10 @@ void	parse_args(int argc, char **argv)
 		if (argv[i][0] == '-')
 			parse_flag(argv[i] + 1);
 		else
-			break ;
+			return(i);
 		i++;
 	}
+	return (-1);
 }
 
 char	**ls(char *path)
@@ -88,12 +89,14 @@ char	**format_list(char **list)
 int main(int argc, char **argv)
 {
 	char *dir = 0;
+	int flags = 0;
+
 	if (argc > 1)
 	{
-		parse_args(argc, argv);
-		dir = argv[argc - 1];
+		flags = parse_args(argc, argv);
+		dir = argv[flags];
 	}
-	else if (argc == 1)
+	if (argc == 1 || flags == -1)
 	{
 		dir = ".";
 	}
@@ -110,7 +113,7 @@ int main(int argc, char **argv)
 			ft_printf("%s\n", basename(*list));
 		}
 		else
-			printf("%s\n", basename(*list));	
+			ft_printf("%s\n", basename(*list));
 		list++;
 	}
 }
