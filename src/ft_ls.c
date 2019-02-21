@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 19:08:26 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 12:42:02 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ char	**format_list(char **list)
 {
 	if (!g_show_hidden)
 		list = flag_hide(list);
+	if (g_sort_time)
+		list = sort_tab(list, time_cmp);
 	if (g_reverse)
-		list = reverse_tab(list);	
+		list = reverse_tab(list);
 	return (list);
 }
 
@@ -98,15 +100,11 @@ void	ls(char *path, int first)
 	list[len] = NULL;
 	free(entry);
 	free(dir);
+	if (g_recursive)
+		if (!first)
+			ft_printf("\n%s:\n", path);
 	list = sort_tab(list, ft_strcmp);
 	list = format_list(list);
-	if (g_recursive)
-	{
-		if (!first)
-		{
-			ft_printf("\n%s:\n", path);
-		}
-	}
 	print_files(list);
 	if (g_recursive)
 	{

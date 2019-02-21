@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 07:16:51 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:42:38 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	**flag_hide(char **str);
 char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
 char	*basename(char *s);
 int		isdir(const char *path);
+int		time_cmp(const char *s1, const char *s2);
 
 void	longflag(char *path);
 # include <sys/stat.h>
