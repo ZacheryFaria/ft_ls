@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 18:32:01 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 19:04:51 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	**format_list(char **list)
 	return (list);
 }
 
-void	ls(char *path)
+void	ls(char *path, int first)
 {
 	DIR				*dir;
 	struct	dirent	*entry;
@@ -102,18 +102,21 @@ void	ls(char *path)
 	list = format_list(list);
 	if (g_recursive)
 	{
-		ft_printf("%s\n", path);
+		if (!first)
+		{
+			ft_printf("\n%s\n", path);
+		}
 	}
 	print_files(list);
 	if (g_recursive)
 	{
 		while (*list)
 		{
-			if (isdir(*list))
-				ls(ft_strjoin(*list, "/"));
+			if (isdir(*list) && ft_strcmp(basename(*list), ".") 
+				&& ft_strcmp(basename(*list), ".."))
+				ls(ft_strjoin(*list, "/"), 0);
 			list++;
 		}
-		ft_printf("%s", "\n");
 	}
 }
 
@@ -133,6 +136,6 @@ int main(int argc, char **argv)
 	}
 	if (dir[ft_strlen(dir) - 1] != '/')
 		dir = ft_strjoin(dir, "/");
-	ls(dir);
+	ls(dir, 1);
 	
 }
