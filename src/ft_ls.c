@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 12:42:02 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 13:03:35 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ls(char *path, int first)
 	free(dir);
 	if (g_recursive)
 		if (!first)
-			ft_printf("\n%s:\n", path);
+			ft_printf("\n%s:\n", ft_strsub(path, 0, ft_strlen(path) - 1));
 	list = sort_tab(list, ft_strcmp);
 	list = format_list(list);
 	print_files(list);
