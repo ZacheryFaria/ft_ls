@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 19:04:51 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 19:08:26 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	ls(char *path, int first)
 	{
 		if (!first)
 		{
-			ft_printf("\n%s\n", path);
+			ft_printf("\n%s:\n", path);
 		}
 	}
 	print_files(list);
