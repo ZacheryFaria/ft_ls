@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_filetypes.c                                   :+:      :+:    :+:   */
+/*   islink.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:04:40 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/21 14:05:34 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/20 18:14:06 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/21 14:28:29 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <sys/stat.h>
-#include <sys/types.h>
-#include <stdlib.h>
 
-char	long_filetypes(struct stat st)
+int	islink(const char *path)
 {
-	if ((S_ISDIR(st.st_mode)))
-		return ('d');
+	struct stat st;
+
+	if (lstat(path, &st) < 0)
+		return (-1);
 	if ((S_ISLNK(st.st_mode)))
-		return ('s');
+		return (1);
 	else
-		return ('-');
+		return (0);
 }

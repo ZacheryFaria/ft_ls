@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 13:35:31 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 14:29:06 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void	ls(char *path, int first)
 	{
 		while (*list)
 		{
-			if (isdir(*list) && ft_strcmp(basename(*list), ".") 
-				&& ft_strcmp(basename(*list), ".."))
+			if (isdir(*list) == 1 && ft_strcmp(basename(*list), ".") 
+				&& ft_strcmp(basename(*list), "..") && islink(*list) != 1)
 				ls(ft_strjoin(*list, "/"), 0);
 			list++;
 		}

@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 12:52:12 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 13:19:06 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 14:58:20 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ char	**reverse_tab(char **tab)
 	while (tab[i])
 		i++;
 	i--;
-	while (j < i / 2)
+	while (j < i)
 	{
-		tmp = tab[i - j];
-		tab[i - j] = tab[j];
+		tmp = tab[i];
+		tab[i] = tab[j];
 		tab[j] = tmp;
 		j++;
+		i--;
 	}
 	return (tab);
 }
