@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:47:19 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 14:48:15 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:47:56 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	long_size(const char *path)
 	struct stat st;
 
 	stat(path, &st);
-	ft_putnbr(st.st_size);
+	ft_printpad(8, " ", ft_itoa(st.st_size), 0);
 }
