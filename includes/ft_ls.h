@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:05:17 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 18:15:33 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	**reverse_tab(char **tab);
 char	**flag_hide(char **str);
 char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
 char	*basename(char *s);
+int		isdir(const char *path);
 
 void	longflag(char *path);
 void	long_filetypes(const char *path);

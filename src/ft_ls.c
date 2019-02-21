@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:42:08 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 18:32:01 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,31 @@ int		parse_args(int argc, char **argv)
 	return (-1);
 }
 
-char	**ls(char *path)
+void	print_files(char **list)
+{
+	while (*list)
+	{
+		if (g_long_format)
+		{
+			longflag(*list);
+			ft_printf("%s\n", basename(*list));
+		}
+		else
+			ft_printf("%s\n", basename(*list));
+		list++;
+	}
+}
+
+char	**format_list(char **list)
+{
+	if (!g_show_hidden)
+		list = flag_hide(list);
+	if (g_reverse)
+		list = reverse_tab(list);	
+	return (list);
+}
+
+void	ls(char *path)
 {
 	DIR				*dir;
 	struct	dirent	*entry;
@@ -74,16 +98,23 @@ char	**ls(char *path)
 	list[len] = NULL;
 	free(entry);
 	free(dir);
-	return (list);
-}
-
-char	**format_list(char **list)
-{
-	if (!g_show_hidden)
-		list = flag_hide(list);
-	if (g_reverse)
-		list = reverse_tab(list);	
-	return (list);
+	list = sort_tab(list, ft_strcmp);
+	list = format_list(list);
+	if (g_recursive)
+	{
+		ft_printf("%s\n", path);
+	}
+	print_files(list);
+	if (g_recursive)
+	{
+		while (*list)
+		{
+			if (isdir(*list))
+				ls(ft_strjoin(*list, "/"));
+			list++;
+		}
+		ft_printf("%s", "\n");
+	}
 }
 
 int main(int argc, char **argv)
@@ -102,18 +133,6 @@ int main(int argc, char **argv)
 	}
 	if (dir[ft_strlen(dir) - 1] != '/')
 		dir = ft_strjoin(dir, "/");
-	char **list = ls(dir);
-	list = sort_tab(list, ft_strcmp);
-	list = format_list(list);
-	while (*list)
-	{
-		if (g_long_format)
-		{
-			longflag(*list);
-			ft_printf("%s\n", basename(*list));
-		}
-		else
-			ft_printf("%s\n", basename(*list));
-		list++;
-	}
+	ls(dir);
+	
 }
