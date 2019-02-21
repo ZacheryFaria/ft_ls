@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 12:42:38 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 13:18:16 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2));
 char	*basename(char *s);
 int		isdir(const char *path);
 int		time_cmp(const char *s1, const char *s2);
+void	free_tab(char **tab);
 
 void	longflag(char *path);
 # include <sys/stat.h>

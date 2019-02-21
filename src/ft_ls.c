@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 13:03:35 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 13:35:31 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	print_files(char **list)
 
 char	**format_list(char **list)
 {
+	list = sort_tab(list, ft_strcmp);
 	if (!g_show_hidden)
 		list = flag_hide(list);
 	if (g_sort_time)
@@ -95,15 +96,16 @@ void	ls(char *path, int first)
 	dir = opendir(path);
 	len = dir_size(path);
 	list = malloc(sizeof(char *) * (len + 1));
+	if (!dir)
+		return ;
 	while ((entry = readdir(dir)) != NULL)
 		list[i++] = ft_strjoin(path, entry->d_name);
+	closedir(dir);
 	list[len] = NULL;
 	free(entry);
-	free(dir);
 	if (g_recursive)
 		if (!first)
 			ft_printf("\n%s:\n", ft_strsub(path, 0, ft_strlen(path) - 1));
-	list = sort_tab(list, ft_strcmp);
 	list = format_list(list);
 	print_files(list);
 	if (g_recursive)
@@ -116,6 +118,7 @@ void	ls(char *path, int first)
 			list++;
 		}
 	}
+	free_tab(list);
 }
 
 int main(int argc, char **argv)

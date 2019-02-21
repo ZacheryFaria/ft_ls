@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_tools.c                                        :+:      :+:    :+:   */
+/*   free_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/19 12:12:03 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 13:15:10 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/21 13:17:36 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/21 13:20:06 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <dirent.h>
 #include <stdlib.h>
 
-int		dir_size(char *dirs)
+void	free_tab(char **tab)
 {
-	DIR				*dir;
-	struct dirent	*entry;
-	int				size;
-
-	size = 0;
-	dir = opendir(dirs);
-	if (!dir)
-		return (0);
-	while ((entry = readdir(dir)) != NULL)
-		size++;
-	closedir(dir);
-	return (size);
+	while (*tab)
+	{
+		free(*tab);
+		*tab = 0;
+		tab++;
+	}
 }
