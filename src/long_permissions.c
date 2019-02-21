@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:16:00 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 18:19:14 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:31:57 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <libft.h>
+#include <ft_ls.h>
 
 void	long_permissions(const char *path)
 {
@@ -21,6 +22,7 @@ void	long_permissions(const char *path)
 
 	if (stat(path, &st) < 0)
 		exit(-1);
+	long_filetypes(path);
 	ft_putchar((st.st_mode & S_IRUSR) ? 'r' : '-');
 	ft_putchar((st.st_mode & S_IWUSR) ? 'w' : '-');
 	ft_putchar((st.st_mode & S_IXUSR) ? 'x' : '-');
@@ -30,4 +32,5 @@ void	long_permissions(const char *path)
 	ft_putchar((st.st_mode & S_IROTH) ? 'r' : '-');
 	ft_putchar((st.st_mode & S_IWOTH) ? 'w' : '-');
 	ft_putchar((st.st_mode & S_IXOTH) ? 'x' : '-');
+	ft_putchar(' ');
 }
