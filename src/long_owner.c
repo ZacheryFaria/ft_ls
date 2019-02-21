@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_owner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:37:44 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 15:32:39 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/20 19:16:23 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	long_owner(char *path)
 
 	stat(path, &st);
 	ft_putstr(getpwuid(st.st_uid)->pw_name);
+	ft_putchar(' ');
 }
