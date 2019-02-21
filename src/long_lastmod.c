@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:49:24 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 15:17:28 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:39:49 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ void	long_lastmod(const char *path)
 	struct stat	st;
 	char		*buf;
 	int			i;
+	int 		j;
 
 	stat(path, &st);
 	buf = ctime(&st.st_mtimespec.tv_sec);
 	while (*buf++ != ' ')
 		;
 	i = 0;
-	while (buf[i++] != ' ')
-		;
-	while (buf[i++] != ' ')
-		;
+	j = 0;
+	while (j++ < 2)
+		while (buf[i++] != ':')
+			;
+	i--;
 	buf[i] = 0;
 	ft_putstr(buf);
 }
