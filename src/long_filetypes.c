@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:04:40 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 18:19:16 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/21 07:16:46 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 #include <sys/types.h>
 #include <stdlib.h>
 
-void	long_filetypes(const char *path)
+char	long_filetypes(struct stat st)
 {
-	struct stat st;
-
-	if (stat(path, &st) < 0)
-		exit(-1);
 	if ((S_ISDIR(st.st_mode)))
-		ft_putchar('d');
+		return ('d');
 	else
-		ft_putchar('-');
+		return ('-');
 }

@@ -6,17 +6,14 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:47:19 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 18:47:56 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/21 07:13:37 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/stat.h>
 #include <libft.h>
 
-void	long_size(const char *path)
+char	*long_size(struct stat st)
 {
-	struct stat st;
-
-	stat(path, &st);
-	ft_printpad(8, " ", ft_itoa(st.st_size), 0);
+	return(ft_itoa(st.st_size));
 }

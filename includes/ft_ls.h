@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 18:15:33 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 07:16:51 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ char	*basename(char *s);
 int		isdir(const char *path);
 
 void	longflag(char *path);
-void	long_filetypes(const char *path);
-void	long_permissions(const char *path);
-void	long_hardlinks(const char *path);
-void	long_owner(const char *path);
-void	long_group(const char *path);
-void	long_size(const char *path);
-void	long_lastmod(const char *path);
+# include <sys/stat.h>
+char	long_filetypes(struct stat st);
+char	*long_permissions(struct stat st);
+char	*long_hardlinks(struct stat st);
+char	*long_owner(struct stat st);
+char	*long_group(struct stat st);
+char	*long_size(struct stat st);
+char	*long_lastmod(struct stat st);
 
 #endif

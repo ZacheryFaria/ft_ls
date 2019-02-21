@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:37:44 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/20 19:16:23 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/21 06:53:49 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 #include <libft.h>
 #include <pwd.h>
 
-void	long_owner(char *path)
+char	*long_owner(struct stat st)
 {
-	struct stat st;
-
-	stat(path, &st);
-	ft_putstr(getpwuid(st.st_uid)->pw_name);
-	ft_putchar(' ');
+	return (getpwuid(st.st_uid)->pw_name);
 }
