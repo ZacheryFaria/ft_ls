@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 12:46:12 by awindham         ###   ########.fr       */
-=======
-/*   Created: 2019/02/22 12:56:25 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 12:56:26 by zfaria           ###   ########.fr       */
->>>>>>> 7a9dff509a68cb3e39fce18d4ad5bf6836a44d6a
+/*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/22 13:12:43 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +41,7 @@ char	**longflag(char *path)
 	int i;
 	struct stat st;
 	char **shit = malloc(9 * sizeof(shit));
+	char *buf;
 
 	lstat(path, &st);
 	i = 0;
@@ -57,16 +53,11 @@ char	**longflag(char *path)
 	shit[i++] = path;	
 	if (shit[0][0] == 'l')
 	{
-<<<<<<< HEAD
-		shit[i] = ft_strnew(1024);
-		readlink(path, shit[i++], 1023);
-=======
 		buf = ft_strnew(1024);
 		readlink(path, buf, 1023);
 		shit[i++] = ft_strdup(basename(buf));
 		free(buf);
 		buf = 0;
->>>>>>> 7a9dff509a68cb3e39fce18d4ad5bf6836a44d6a
 	}
 	shit[i] = 0;
 	return (shit);
