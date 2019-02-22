@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_permissions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:16:00 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 10:27:11 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:24:05 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ char	*long_permissions(struct stat st)
 	done[7] = ((st.st_mode & S_IROTH) ? 'r' : '-');
 	done[8] = ((st.st_mode & S_IWOTH) ? 'w' : '-');
 	done[9] = ((st.st_mode & S_IXOTH) ? 'x' : '-');
-	done[10] = 0;
+	done[11] = 0;
 	return (done);
 }

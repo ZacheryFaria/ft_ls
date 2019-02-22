@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_getmaxwidth.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 15:48:46 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 11:07:08 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:21:28 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	*long_getmaxwidth(char ***s)
 {
 	int *done = malloc(7 * sizeof(*done));
 	done[0] = largest(s, 0) - 1;
-	done[1] = largest(s, 1) + 1;
+	done[1] = largest(s, 1);
 	done[2] = largest(s, 2);
 	done[3] = largest(s, 3) + 1;
 	done[4] = largest(s, 4) + 1;

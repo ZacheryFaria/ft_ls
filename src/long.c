@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:12:43 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:22:48 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/xattr.h>
 
 /* 
 ** Unix file types,
@@ -60,5 +61,7 @@ char	**longflag(char *path)
 		buf = 0;
 	}
 	shit[i] = 0;
+	shit[0][10] = listxattr(path, NULL, 0, XATTR_NOFOLLOW) > 0 ?
+		'@' : ' ';
 	return (shit);
 }
