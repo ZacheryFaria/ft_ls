@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 11:00:00 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 12:03:06 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ void	print_files(char **list)
 	else
 		while (++j < i)
 			ft_printf("%s\n", basename(done[j][6]));
-	while (*done)
+	i--;
+	while (i > 0)
 	{
-		free_tab(*done);
-		*done = 0;
-		done++;
+		free_tab(done[i]);
+		done[i] = 0;
+		i--;
 	}
-	//free(done);
 }
 
 char	**format_list(char **list)

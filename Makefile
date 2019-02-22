@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Werror -Wextra -Wall -g -I libft/ -I includes -ofast
+CFLAGS=-Werror -Wextra -Wall -g -I libft/ -I includes -ofast -ggdb3
 LIBFLAGS=-L libft/ -lft
 NAME=ft_ls
 SRC=$(wildcard src/*)
