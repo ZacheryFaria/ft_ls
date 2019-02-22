@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 14:11:50 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 15:22:19 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,7 @@ int main(int argc, char **argv)
 		flags = parse_args(argc, argv);
 		dir = argv[flags];
 	}
-	if (g_color)
-		print_color();
+
 	if (argc == 1 || flags == -1)
 	{
 		dir = ".";
@@ -177,4 +176,6 @@ int main(int argc, char **argv)
 	if (dir[ft_strlen(dir) - 1] != '/')
 		dir = ft_strjoin(dir, "/");
 	ls(dir, 1);
+	if (g_color)
+		print_color();
 }
