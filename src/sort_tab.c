@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sort_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 14:25:00 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 12:59:20 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:59:51 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	**sort_tab(char **tab, int (*cmp)(const char *s1, const char *s2))
 {
 	char	*last;
-	int 	sorted;
+	int		sorted;
 	int		i;
 
 	sorted = 0;

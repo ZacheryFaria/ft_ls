@@ -32,7 +32,7 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette src/. include/.
+	norminette src/. includes/.
 
 update:
 	@./update.sh

@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:22:48 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 13:59:08 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,7 @@
 #include <unistd.h>
 #include <sys/xattr.h>
 
-/* 
-** Unix file types,
-** permissions,
-** number of hard links,
-** owner,
-** group,
-** size,
-** last-modified date
-*/
-
-char* (*f[6])(struct stat st) =
+char	*(*g_ay[6])(struct stat st) =
 {
 	long_permissions,
 	long_hardlinks,
@@ -39,19 +29,19 @@ char* (*f[6])(struct stat st) =
 
 char	**longflag(char *path)
 {
-	int i;
-	struct stat st;
-	char **shit = malloc(9 * sizeof(shit));
-	char *buf;
+	int				i;
+	struct stat		st;
+	char			**shit;
+	char			*buf;
 
+	shit = malloc(9 * sizeof(shit));
 	lstat(path, &st);
-	i = 0;
-	while (i < 6)
+	i = -1;
+	while (++i < 6)
 	{
-		shit[i] = (*f[i])(st);
-		i++;
+		shit[i] = (*g_ay[i])(st);
 	}
-	shit[i++] = path;	
+	shit[i++] = path;
 	if (shit[0][0] == 'l')
 	{
 		buf = ft_strnew(1024);

@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:47:19 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/21 07:13:37 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 13:43:58 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 char	*long_size(struct stat st)
 {
-	return(ft_itoa(st.st_size));
+	return (ft_itoa(st.st_size));
 }

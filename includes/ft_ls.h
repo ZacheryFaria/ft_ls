@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:22:35 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:48:14 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 
-extern int		recursive;
-extern int		reverse;
-extern int		show_hidden;
-extern int		sort_time;
-extern int		long_format;
+# include <sys/stat.h>
 
+extern int		g_recursive;
+extern int		g_reverse;
+extern int		g_show_hidden;
+extern int		g_sort_time;
+extern int		g_long_format;
 
 int		dir_size(char *dirs);
 char	**get_files(char *dirs);
@@ -32,11 +33,9 @@ int		time_cmp(const char *s1, const char *s2);
 void	free_tab(char **tab);
 int		array_len(char **arr);
 
-void 	qsort_tab(char **list, int len, int (*f)(const char *, const char *));
-
+void	qsort_tab(char **list, int len, int (*f)(const char *, const char *));
 
 char	**longflag(char *path);
-# include <sys/stat.h>
 char	long_filetypes(struct stat st);
 char	*long_permissions(struct stat st);
 char	*long_hardlinks(struct stat st);

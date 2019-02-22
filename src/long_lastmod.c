@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_lastmod.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:49:24 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 10:47:36 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:43:17 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include <libft.h>
 #include <time.h>
 
-
-char		*long_lastmod(struct stat st)
+char	*long_lastmod(struct stat st)
 {
 	char	*done;
 

@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 15:48:46 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 13:21:28 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 13:41:43 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 int	largest(char ***s, int i)
 {
-	int done = 0;
-	int j = 0;
-	
+	int done;
+	int j;
+
+	done = 0;
+	j = 0;
 	while (s[j])
 	{
 		if (done < (int)ft_strlen(s[j][i]))
@@ -29,7 +31,9 @@ int	largest(char ***s, int i)
 
 int	*long_getmaxwidth(char ***s)
 {
-	int *done = malloc(7 * sizeof(*done));
+	int *done;
+
+	done = malloc(7 * sizeof(*done));
 	done[0] = largest(s, 0) - 1;
 	done[1] = largest(s, 1);
 	done[2] = largest(s, 2);
