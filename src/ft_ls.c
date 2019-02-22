@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 12:03:06 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 12:37:33 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		parse_args(int argc, char **argv)
 
 void	print_files(char **list)
 {
-	char ***done = malloc(1024 * sizeof(done));
+	char ***done = malloc(4096 * sizeof(done));
 	int i = 0;
 	int j = 0;
 	int *maxwidth;
@@ -82,17 +82,24 @@ void	print_files(char **list)
 			ft_printpad(maxwidth[4], " ", done[j][4], 0);
 			ft_printpad(maxwidth[5], " ", done[j][5], 0);
 			ft_printf(" %s\n", basename(done[j][6]));
+			free(maxwidth);
+			maxwidth = 0;
 		}
 	else
 		while (++j < i)
 			ft_printf("%s\n", basename(done[j][6]));
 	i--;
-	while (i > 0)
+	while (i >= 0)
 	{
 		free_tab(done[i]);
+		if (done[i])
+			free(done[i]);
 		done[i] = 0;
 		i--;
 	}
+	if (done)
+		free(done);
+	done = 0;
 }
 
 char	**format_list(char **list)
@@ -131,17 +138,19 @@ void	ls(char *path, int first)
 			ft_printf("\n%s:\n", ft_strsub(path, 0, ft_strlen(path) - 1));
 	list = format_list(list);
 	print_files(list);
+	i = 0;
 	if (g_recursive)
 	{
-		while (*list)
+		while (list[i])
 		{
-			if (isdir(*list) == 1 && ft_strcmp(basename(*list), ".") 
-				&& ft_strcmp(basename(*list), "..") && islink(*list) != 1)
-				ls(ft_strjoin(*list, "/"), 0);
-			list++;
+			if (isdir(list[i]) == 1 && ft_strcmp(basename(list[i]), ".") 
+				&& ft_strcmp(basename(list[i]), "..") && islink(list[i]) != 1)
+				ls(ft_strjoin(list[i], "/"), 0);
+			i++;
 		}
 	}
 	free_tab(list);
+	//free(list);
 }
 
 int main(int argc, char **argv)
