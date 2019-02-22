@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 16:14:26 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:30:42 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		parse_args(int argc, char **argv)
 
 void	print_files(char **list)
 {
-	char ***done = malloc(1024);
+	char ***done = malloc(1024 * sizeof(done));
 	int i = 0;
 	int j = 0;
 	int *maxwidth;
@@ -81,11 +81,11 @@ void	print_files(char **list)
 			ft_printpad(maxwidth[3], " ", done[j][3], 0);
 			ft_printpad(maxwidth[4], " ", done[j][4], 0);
 			ft_printpad(maxwidth[5], " ", done[j][5], 0);
-			ft_printf(" %s\n", done[j][6]);
+			ft_printf(" %s\n", basename(done[j][6]));
 		}
 	else
 		while (++j < i)
-			ft_printf("%s\n", done[j][6]);
+			ft_printf("%s\n", basename(done[j][6]));
 
 }
 
