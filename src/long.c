@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 12:34:19 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:47:55 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	**longflag(char *path)
 		buf = ft_strnew(1024);
 		readlink(path, buf, 1023);
 		shit[i++] = ft_strdup(basename(buf));
+		free(buf);
+		buf = 0;
 	}
 	shit[i] = 0;
 	return (shit);
