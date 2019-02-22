@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:48:14 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:16:15 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ char	*long_group(struct stat st);
 char	*long_size(struct stat st);
 char	*long_lastmod(struct stat st);
 int		*long_getmaxwidth(char ***s);
+
+void	print_color(void);
 
 #endif

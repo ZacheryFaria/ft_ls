@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:23:21 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 14:11:50 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int g_recursive = 0;
 int g_show_hidden = 0;
 int g_sort_time = 0;
 int g_reverse = 0;
+int g_color = 0;
 
 void	parse_flag(char *str)
 {
@@ -35,6 +36,8 @@ void	parse_flag(char *str)
 		g_show_hidden = 1;
 	if (*str == 't')
 		g_sort_time = 1;
+	if (*str == 'G')
+		g_color = 1;
 	str += 1;
 	if (*str)
 		parse_flag(str);
@@ -165,6 +168,8 @@ int main(int argc, char **argv)
 		flags = parse_args(argc, argv);
 		dir = argv[flags];
 	}
+	if (g_color)
+		print_color();
 	if (argc == 1 || flags == -1)
 	{
 		dir = ".";
