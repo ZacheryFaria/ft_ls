@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 15:59:11 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 13:22:35 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int		isdir(const char *path);
 int		islink(const char *path);
 int		time_cmp(const char *s1, const char *s2);
 void	free_tab(char **tab);
+int		array_len(char **arr);
+
+void 	qsort_tab(char **list, int len, int (*f)(const char *, const char *));
 
 
 char	**longflag(char *path);
