@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 12:39:33 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:23:21 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,11 @@ void	print_files(char **list)
 
 char	**format_list(char **list)
 {
-	list = sort_tab(list, ft_strcmp);
+	qsort_tab(list, array_len(list), ft_strcmp);
 	if (!g_show_hidden)
 		list = flag_hide(list);
 	if (g_sort_time)
-		list = sort_tab(list, time_cmp);
+		qsort_tab(list, array_len(list), time_cmp);
 	if (g_reverse)
 		list = reverse_tab(list);
 	return (list);
@@ -172,5 +172,4 @@ int main(int argc, char **argv)
 	if (dir[ft_strlen(dir) - 1] != '/')
 		dir = ft_strjoin(dir, "/");
 	ls(dir, 1);
-	
 }
