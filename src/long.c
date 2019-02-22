@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/21 15:40:29 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:51:49 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**longflag(char *path)
 		shit[i] = (*f[i])(st);
 		i++;
 	}
-	shit[i] = path;
-
+	shit[i++] = path;
+	shit[i] = 0;
 	return (shit);
 }

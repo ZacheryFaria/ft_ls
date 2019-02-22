@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_owner.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:37:44 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/21 06:53:49 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:46:31 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 
 char	*long_owner(struct stat st)
 {
-	return (getpwuid(st.st_uid)->pw_name);
+	return (ft_strdup(getpwuid(st.st_uid)->pw_name));
 }

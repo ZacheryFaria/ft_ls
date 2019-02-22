@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_lastmod.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:49:24 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/21 07:27:53 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 10:47:36 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ char		*long_lastmod(struct stat st)
 	done = ctime(&st.st_mtimespec.tv_sec);
 	done += 4;
 	done[12] = 0;
-	return (done);
+	return (ft_strdup(done));
 }
