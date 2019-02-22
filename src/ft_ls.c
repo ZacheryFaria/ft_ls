@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 14:11:50 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:46:14 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	ls(char *path, int first)
 	char 			**list;
 	int				i;
 	int				len;
+	char			*tmp;
 
 	i = 0;
 	dir = opendir(path);
@@ -140,7 +141,11 @@ void	ls(char *path, int first)
 	free(entry);
 	if (g_recursive)
 		if (!first)
-			ft_printf("\n%s:\n", ft_strsub(path, 0, ft_strlen(path) - 1));
+		{
+			tmp = ft_strsub(path, 0, ft_strlen(path) - 1);
+			ft_printf("\n%s:\n", tmp);
+			ft_strdel(&tmp);
+		}
 	list = format_list(list);
 	print_files(list);
 	i = 0;
@@ -150,12 +155,15 @@ void	ls(char *path, int first)
 		{
 			if (isdir(list[i]) == 1 && ft_strcmp(basename(list[i]), ".") 
 				&& ft_strcmp(basename(list[i]), "..") && islink(list[i]) != 1)
-				ls(ft_strjoin(list[i], "/"), 0);
+			{
+				tmp = ft_strjoin(list[i], "/");
+				ls(tmp, 0);
+				ft_strdel(&tmp);
+			}
 			i++;
 		}
 	}
 	free_tab(list);
-	//free(list);
 }
 
 int main(int argc, char **argv)
