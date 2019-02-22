@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 12:37:33 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/22 12:39:33 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <libft.h>
 #include <dirent.h>
@@ -81,7 +80,10 @@ void	print_files(char **list)
 			ft_printpad(maxwidth[3], " ", done[j][3], 0);
 			ft_printpad(maxwidth[4], " ", done[j][4], 0);
 			ft_printpad(maxwidth[5], " ", done[j][5], 0);
-			ft_printf(" %s\n", basename(done[j][6]));
+			ft_printf(" %s", basename(done[j][6]));			
+			if (done[j][7])
+				ft_printf(" -> %s", basename(done[j][7]));
+			ft_printf("\n");
 			free(maxwidth);
 			maxwidth = 0;
 		}
