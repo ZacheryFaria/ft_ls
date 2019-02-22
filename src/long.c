@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 12:34:19 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 12:41:00 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**longflag(char *path)
 		i++;
 	}
 	shit[i++] = path;	
-	if (shit[0][0] != '-')
+	if (shit[0][0] == 'l')
 	{
 		buf = ft_strnew(1024);
 		readlink(path, buf, 1023);
