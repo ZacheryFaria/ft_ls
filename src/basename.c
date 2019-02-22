@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   basename.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:05:04 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/20 15:31:51 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/22 13:08:41 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*basename(char *s)
 {
 	char *p;
 	
-	if ((p = strrchr(s, '/')) == 0)
+	if ((p = ft_strrchr(s, '/')) == 0)
 		p = s;
 	if (*p == '/')
 		p++;
