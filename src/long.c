@@ -6,13 +6,14 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:01:15 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/21 07:45:35 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/21 15:40:29 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <ft_ls.h>
 #include <sys/stat.h>
+#include <stdlib.h>
 
 /* 
 ** Unix file types,
@@ -23,6 +24,7 @@
 ** size,
 ** last-modified date
 */
+
 char* (*f[6])(struct stat st) =
 {
 	long_permissions,
@@ -33,17 +35,20 @@ char* (*f[6])(struct stat st) =
 	long_lastmod
 };
 
-void	longflag(char *path)
+char	**longflag(char *path)
 {
 	int i;
 	struct stat st;
+	char **shit = malloc(8 * sizeof(shit));
 
 	stat(path, &st);
 	i = 0;
 	while (i < 6)
 	{
-		ft_printpad(10 , " ", (*f[i])(st), 0);
-		ft_printf(" ");
+		shit[i] = (*f[i])(st);
 		i++;
 	}
+	shit[i] = path;
+
+	return (shit);
 }

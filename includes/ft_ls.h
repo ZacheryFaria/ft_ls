@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 14:28:55 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 15:59:11 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		islink(const char *path);
 int		time_cmp(const char *s1, const char *s2);
 void	free_tab(char **tab);
 
-void	longflag(char *path);
+
+char	**longflag(char *path);
 # include <sys/stat.h>
 char	long_filetypes(struct stat st);
 char	*long_permissions(struct stat st);
@@ -40,5 +41,6 @@ char	*long_owner(struct stat st);
 char	*long_group(struct stat st);
 char	*long_size(struct stat st);
 char	*long_lastmod(struct stat st);
+int		*long_getmaxwidth(char ***s);
 
 #endif

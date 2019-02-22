@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:26:41 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/21 14:29:06 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/21 16:14:26 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,34 @@ int		parse_args(int argc, char **argv)
 
 void	print_files(char **list)
 {
-	while (*list)
+	char ***done = malloc(1024);
+	int i = 0;
+	int j = 0;
+	int *maxwidth;
+
+	while (list[i])
 	{
-		if (g_long_format)
-		{
-			longflag(*list);
-			ft_printf("%s\n", basename(*list));
-		}
-		else
-			ft_printf("%s\n", basename(*list));
-		list++;
+		done[i] = longflag(list[i]);
+		i++;
 	}
+	done[i] = 0;
+	j = -1;
+	if (g_long_format == 1)
+		while (++j < i)
+		{
+			maxwidth = long_getmaxwidth(done);
+			ft_printpad(maxwidth[0], " ", done[j][0], 0);
+			ft_printpad(maxwidth[1], " ", done[j][1], 0);
+			ft_printpad(maxwidth[2], " ", done[j][2], 0);
+			ft_printpad(maxwidth[3], " ", done[j][3], 0);
+			ft_printpad(maxwidth[4], " ", done[j][4], 0);
+			ft_printpad(maxwidth[5], " ", done[j][5], 0);
+			ft_printf(" %s\n", done[j][6]);
+		}
+	else
+		while (++j < i)
+			ft_printf("%s\n", done[j][6]);
+
 }
 
 char	**format_list(char **list)
