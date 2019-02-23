@@ -2,7 +2,6 @@
 .idea/
 CMakeLists.txt
 cmake-build-debug/
-main.c
 *.a
 libft_tests.c
 test.c
