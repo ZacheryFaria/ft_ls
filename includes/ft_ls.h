@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 14:16:15 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:33:03 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ extern int		g_reverse;
 extern int		g_show_hidden;
 extern int		g_sort_time;
 extern int		g_long_format;
+extern int		g_color;
 
 int		dir_size(char *dirs);
 char	**get_files(char *dirs);
