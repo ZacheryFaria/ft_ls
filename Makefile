@@ -38,3 +38,6 @@ update:
 	@./update.sh
 
 norme: norm
+
+test: all
+	./ft_ls -lRa test

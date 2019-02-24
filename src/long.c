@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:59:08 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/24 14:24:32 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	**longflag(char *path)
 	int				i;
 	struct stat		st;
 	char			**shit;
-	char			*buf;
 
 	shit = malloc(9 * sizeof(shit));
 	lstat(path, &st);
@@ -43,13 +42,7 @@ char	**longflag(char *path)
 	}
 	shit[i++] = path;
 	if (shit[0][0] == 'l')
-	{
-		buf = ft_strnew(1024);
-		readlink(path, buf, 1023);
-		shit[i++] = ft_strdup(basename(buf));
-		free(buf);
-		buf = 0;
-	}
+		shit[i++] = long_link(path);
 	shit[i] = 0;
 	shit[0][10] = listxattr(path, NULL, 0, XATTR_NOFOLLOW) > 0 ?
 		'@' : ' ';
