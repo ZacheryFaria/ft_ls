@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 18:06:07 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/24 11:00:09 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**format_list(char **list)
 	return (list);
 }
 
-void	piiiiiiiss(char *path, int first)
+void	printpath(char *path, int first)
 {
 	char *tmp;
 
@@ -39,7 +39,7 @@ void	piiiiiiiss(char *path, int first)
 	}
 }
 
-void	piss(char **list)
+void	recurse(char **list)
 {
 	char	*tmp;
 	int		i;
@@ -78,11 +78,11 @@ void	ls(char *path, int first)
 	list[len] = NULL;
 	free(entry);
 	if (g_recursive)
-		piiiiiiiss(path, first);
+		printpath(path, first);
 	list = format_list(list);
 	print_files(list);
 	i = 0;
 	if (g_recursive)
-		piss(list);
+		recurse(list);
 	free_tab(list);
 }
