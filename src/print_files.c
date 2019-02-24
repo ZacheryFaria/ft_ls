@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 17:45:18 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/24 14:41:11 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_long(char ***done, int i, int j)
 		ft_printpad(maxwidth[5], " ", done[j][5], 0);
 		ft_printf(" %s", basename(done[j][6]));
 		if (done[j][7])
-			ft_printf(" -> %s", basename(done[j][7]));
+			ft_printf(" -> %s", done[j][7]);
 		ft_printf("\n");
 		free(maxwidth);
 		maxwidth = 0;
