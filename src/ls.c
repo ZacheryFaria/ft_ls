@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/24 11:00:09 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/24 18:13:32 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <dirent.h>
 #include <ft_ls.h>
 #include <stdlib.h>
+
+#define DIE {closedir(dir);free(list);return;}
 
 char	**format_list(char **list)
 {
@@ -71,7 +73,7 @@ void	ls(char *path, int first)
 	len = dir_size(path);
 	list = malloc(sizeof(char *) * (len + 1));
 	if (!dir)
-		return ;
+		DIE;
 	while ((entry = readdir(dir)) != NULL)
 		list[i++] = ft_strjoin(path, entry->d_name);
 	closedir(dir);

@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 18:06:28 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/24 15:21:31 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ int		main(int argc, char **argv)
 	ls(dir, 1);
 	if (g_color)
 		print_color();
+	return (0);
 }
