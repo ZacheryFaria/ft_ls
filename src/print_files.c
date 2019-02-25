@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 13:13:55 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 13:32:42 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	print_long(char ***done, int i, int j)
 	while (++j < i)
 	{
 		maxwidth = long_getmaxwidth(done);
-		ft_printpad(maxwidth[0], " ", done[j][0], 0);
-		ft_printpad(maxwidth[1], " ", done[j][1], 0);
-		ft_printpad(maxwidth[2], " ", done[j][2], 0);
-		ft_printpad(maxwidth[3], " ", done[j][3], 0);
-		ft_printpad(maxwidth[4], " ", done[j][4], 0);
-		ft_printpad(maxwidth[4], " ", done[j][5], 0);
-		ft_printpad(maxwidth[5], " ", done[j][6], 0);
+		ft_printpad(maxwidth[0], " ", 'r', done[j][0], 0);
+		ft_printpad(maxwidth[1], " ", 'r', done[j][1], 0);
+		ft_printpad(maxwidth[2], " ", 'l', done[j][2], 0);
+		ft_printpad(maxwidth[3], " ", 'l', done[j][3], 0);
+		ft_printpad(maxwidth[4], " ", 'r', done[j][4], 0);
+		ft_printpad(maxwidth[4], " ", 'r', done[j][5], 0);
+		ft_printpad(maxwidth[5], " ", 'r', done[j][6], 0);
 
 		if (done[j][10])
 			ft_printf(" %s", basename(done[j][10]));
