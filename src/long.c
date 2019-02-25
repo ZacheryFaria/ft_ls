@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 10:37:56 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 10:47:51 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**longflag(char *path)
 	struct stat		st;
 	char			**shit;
 
-	shit = malloc(10 * sizeof(shit));
+	shit = malloc(12 * sizeof(shit));
 	lstat(path, &st);
 	i = -1;
 	while (++i < 7)
@@ -58,9 +58,10 @@ char	**longflag(char *path)
 			shit[i] = (*g_ay[i])(st);
 		}
 	}
-	shit[i++] = path;
+	shit[10] = path;
+	shit[11] = 0;
 	if (shit[0][0] == 'l')
-		shit[i++] = long_link(path);
+		shit[11] = long_link(path);
 	shit[i] = 0;
 	shit[0][10] = listxattr(path, NULL, 0, XATTR_NOFOLLOW) > 0 ?
 		'@' : ' ';
