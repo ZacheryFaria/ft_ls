@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 10:56:05 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 11:55:09 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	print_long(char ***done, int i, int j)
 {
 	int *maxwidth;
 
-	j = 0;
-	while (j < i)
+	j = -1;
+	while (++j < i)
 	{
 		maxwidth = long_getmaxwidth(done);
 		ft_printpad(maxwidth[0], " ", done[j][0], 0);
@@ -37,7 +37,6 @@ void	print_long(char ***done, int i, int j)
 		ft_printf("\n");
 		free(maxwidth);
 		maxwidth = 0;
-		j++;
 	}
 }
 
@@ -71,7 +70,15 @@ void	print_files(char **list)
 		print_long(done, i, j);
 	else
 		while (++j <= i)
-			ft_printf("%s\n", basename(done[j - 1][10]));
+		{
+			if (!g_show_hidden && !g_fsort)
+			{
+				if (basename(done[j - 1][10])[0] != '.')
+					ft_printf("%s\n", basename(done[j - 1][10]));
+			}
+			else
+				ft_printf("%s\n", basename(done[j - 1][10]));
+		}
 	i--;
 	freeshit(done, i);
 	done = 0;

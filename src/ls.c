@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/24 18:13:32 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 12:12:02 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 
 char	**format_list(char **list)
 {
-	qsort_tab(list, array_len(list), ft_strcmp);
-	if (!g_show_hidden)
-		list = flag_hide(list);
 	if (g_sort_time)
 		qsort_tab(list, array_len(list), time_cmp);
+	else if (!g_fsort)
+		qsort_tab(list, array_len(list), ft_strcmp);
 	if (g_reverse)
 		list = reverse_tab(list);
 	return (list);

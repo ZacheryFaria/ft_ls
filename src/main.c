@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/24 15:21:31 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 11:43:53 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int g_show_hidden = 0;
 int g_sort_time = 0;
 int g_reverse = 0;
 int g_color = 0;
+int	g_fsort = 0;
 
 void	parse_flag(char *str)
 {
@@ -38,6 +39,8 @@ void	parse_flag(char *str)
 		g_sort_time = 1;
 	if (*str == 'G')
 		g_color = 1;
+	if (*str == 'f')
+		g_fsort	= 1;
 	str += 1;
 	if (*str)
 		parse_flag(str);
