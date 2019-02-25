@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 14:47:54 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 15:51:42 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_long(char ***done, int i, int j)
 		ft_printpad(maxwidth[5], " ", 'r', done[j][6], 0);
 
 		if (done[j][10])
-			ft_printf(" %s", basename(done[j][10]));
+			ft_printf("%s", basename(done[j][10]));
 		if (done[j][11])
 			ft_printf(" -> %s", done[j][11]);
 		ft_printf("\n");
