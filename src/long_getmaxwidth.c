@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long_getmaxwidth.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 15:48:46 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/22 13:41:43 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 12:36:20 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	*long_getmaxwidth(char ***s)
 	done[1] = largest(s, 1);
 	done[2] = largest(s, 2);
 	done[3] = largest(s, 3) + 1;
-	done[4] = largest(s, 4) + 1;
+	done[4] = largest(s, 4);
 	done[5] = largest(s, 5);
 	done[6] = largest(s, 6);
 	return (done);
