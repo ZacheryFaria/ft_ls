@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/24 14:41:11 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:36:12 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	print_long(char ***done, int i, int j)
 		ft_printpad(maxwidth[3], " ", done[j][3], 0);
 		ft_printpad(maxwidth[4], " ", done[j][4], 0);
 		ft_printpad(maxwidth[5], " ", done[j][5], 0);
+		
 		ft_printf(" %s", basename(done[j][6]));
 		if (done[j][7])
 			ft_printf(" -> %s", done[j][7]);
@@ -66,8 +67,8 @@ void	print_files(char **list)
 	if (g_long_format == 1)
 		print_long(done, i, j);
 	else
-		while (++j < i)
-			ft_printf("%s\n", basename(done[j][6]));
+		while (++j <= i)
+			ft_printf("%s\n", basename(done[j - 1][6]));
 	i--;
 	freeshit(done, i);
 	done = 0;

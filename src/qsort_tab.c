@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   qsort_tab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:16:32 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/22 13:49:20 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 09:35:14 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 void	swap_str_ptrs(char **arg1, char **arg2)
 {
@@ -29,7 +27,7 @@ void	qsort_tab(char **list, int len, int (*f)(const char *, const char *))
 	if (len <= 1)
 		return ;
 	pvt = 0;
-	swap_str_ptrs(list + ((int)rand() % len), list + len - 1);
+	swap_str_ptrs(list + (5 % len), list + len - 1);
 	i = 0;
 	while (i < len - 1)
 	{

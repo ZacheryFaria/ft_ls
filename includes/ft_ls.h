@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/24 14:42:12 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:28:28 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*long_size(struct stat st);
 char	*long_lastmod(struct stat st);
 int		*long_getmaxwidth(char ***s);
 char	*long_link(char *path);
+char	*long_major(struct stat st);
+char	*long_minor(struct stat st);
 
 void	print_color(void);
 

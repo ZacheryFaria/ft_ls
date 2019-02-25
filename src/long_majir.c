@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   long_filetypes.c                                   :+:      :+:    :+:   */
+/*   long_majir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/20 13:04:40 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 10:37:03 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/25 10:27:15 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/25 10:29:34 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <ft_ls.h>
 #include <sys/stat.h>
-#include <sys/types.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/xattr.h>
 
-char	long_filetypes(struct stat st)
+char	*long_major(struct stat st)
 {
-	if ((S_ISDIR(st.st_mode)))
-		return ('d');
-	if ((S_ISLNK(st.st_mode)))
-		return ('l');
-	if ((S_ISCHR(st.st_mode)))
-		return ('c');
-	if ((S_ISBLK(st.st_mode)))
-		return ('b');
-	return ('-');
+	return(ft_itoa(major(st.st_rdev)));
+}
+
+char	*long_minor(struct stat st)
+{
+	return(ft_itoa(minor(st.st_rdev)));
 }

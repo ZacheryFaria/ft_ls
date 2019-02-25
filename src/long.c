@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/24 14:38:51 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 10:37:56 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,37 @@ char	*(*g_ay[6])(struct stat st) =
 	long_lastmod
 };
 
+char	*(*g_aay[7])(struct stat st) =
+{
+	long_permissions,
+	long_hardlinks,
+	long_owner,
+	long_group,
+	long_major,
+	long_minor,
+	long_lastmod
+};
+
 char	**longflag(char *path)
 {
 	int				i;
 	struct stat		st;
 	char			**shit;
 
-	shit = malloc(9 * sizeof(shit));
+	shit = malloc(10 * sizeof(shit));
 	lstat(path, &st);
 	i = -1;
-	while (++i < 6)
-		shit[i] = (*g_ay[i])(st);
+	while (++i < 7)
+	{
+		if (S_ISCHR(st.st_mode) || S_ISBLK(st.st_mode))
+			shit[i] = g_aay[i](st);
+		else
+		{
+			if (i == 6)
+				break ;
+			shit[i] = (*g_ay[i])(st);
+		}
+	}
 	shit[i++] = path;
 	if (shit[0][0] == 'l')
 		shit[i++] = long_link(path);
