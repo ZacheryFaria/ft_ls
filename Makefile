@@ -35,7 +35,7 @@ norm:
 	norminette src/. includes/.
 
 update:
-	#@./update.sh
+	@./update.sh
 
 norme: norm
 
