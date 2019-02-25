@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 13:06:49 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 14:48:07 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	fsort(char **list);
 
 void	qsort_tab(char **list, int len, int (*f)(const char *, const char *));
 
-char	**longflag(char *path);
+char	**longflag(char *path, long *blocksize);
 char	long_filetypes(struct stat st);
 char	*long_permissions(struct stat st);
 char	*long_hardlinks(struct stat st);

@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 10:47:51 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 14:49:53 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*(*g_aay[7])(struct stat st) =
 	long_lastmod
 };
 
-char	**longflag(char *path)
+char	**longflag(char *path, long *blocksize)
 {
 	int				i;
 	struct stat		st;
@@ -47,6 +47,8 @@ char	**longflag(char *path)
 	shit = malloc(12 * sizeof(shit));
 	lstat(path, &st);
 	i = -1;
+	*blocksize += st.st_size / 512;
+	*blocksize += (st.st_size % 512 > 0);
 	while (++i < 7)
 	{
 		if (S_ISCHR(st.st_mode) || S_ISBLK(st.st_mode))

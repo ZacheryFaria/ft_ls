@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 13:32:42 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 14:47:54 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,20 @@ void	print_files(char **list)
 	char	***done;
 	int		i;
 	int		j;
+	long	blocksize;
 
+	blocksize = 0;
 	done = malloc(4096 * sizeof(done));
 	i = -1;
 	while (list[++i])
-		done[i] = longflag(ft_strdup(list[i]));
+		done[i] = longflag(ft_strdup(list[i]), &blocksize);
 	done[i] = 0;
 	j = 0;
 	if (g_long_format == 1)
+	{
+		ft_printf("total %d\n", blocksize);
 		print_long(done, i, j);
+	}
 	else
 		while (++j <= i)
 		{
