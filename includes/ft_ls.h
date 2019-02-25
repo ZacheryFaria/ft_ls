@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 11:59:58 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 13:06:49 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ extern int		g_sort_time;
 extern int		g_long_format;
 extern int		g_fsort;
 extern int		g_color;
+extern int		g_show_hidden_root;
 
 void	ls(char *path, int first);
 void	print_files(char **list);

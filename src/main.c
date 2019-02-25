@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 11:43:53 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 13:07:48 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int g_sort_time = 0;
 int g_reverse = 0;
 int g_color = 0;
 int	g_fsort = 0;
+int	g_show_hidden_root = 0;
 
 void	parse_flag(char *str)
 {
@@ -39,8 +40,11 @@ void	parse_flag(char *str)
 		g_sort_time = 1;
 	if (*str == 'G')
 		g_color = 1;
-	if (*str == 'f')
-		g_fsort	= 1;
+	if (*str == 'A')
+	{
+		g_show_hidden = 1;
+		g_show_hidden_root = 1;
+	}
 	str += 1;
 	if (*str)
 		parse_flag(str);
