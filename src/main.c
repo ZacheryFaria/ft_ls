@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 17:19:22 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 13:07:48 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		parse_args(int argc, char **argv)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int		main(int argc, char **argv)
@@ -74,20 +74,15 @@ int		main(int argc, char **argv)
 	flags = 0;
 	dir = 0;
 	if (argc > 1)
-		flags = parse_args(argc, argv);
-	while (flags < argc)
 	{
-		if (argc == 1 || flags == 0)
-			dir = ".";
-		else
-			dir = argv[flags - 1];
-		if (dir[ft_strlen(dir) - 1] != '/')
-			dir = ft_strjoin(dir, "/");
-		ls(dir, 1);
-		flags++;
-		if (flags < argc)
-			ft_printf("\n");
+		flags = parse_args(argc, argv);
+		dir = argv[flags];
 	}
+	if (argc == 1 || flags == -1)
+		dir = ".";
+	if (dir[ft_strlen(dir) - 1] != '/')
+		dir = ft_strjoin(dir, "/");
+	ls(dir, 1);
 	if (g_color)
 		print_color();
 	return (0);

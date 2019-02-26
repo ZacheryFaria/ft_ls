@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 15:51:42 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 17:20:21 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	print_files(char **list)
 		done[i] = longflag(ft_strdup(list[i]), &blocksize);
 	done[i] = 0;
 	j = 0;
+	if (i == 0)
+		return ;
 	if (g_long_format == 1)
 	{
 		ft_printf("total %d\n", blocksize);
