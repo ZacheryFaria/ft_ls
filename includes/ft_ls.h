@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 13:39:55 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/26 12:29:30 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 14:28:42 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ extern int		g_fsort;
 extern int		g_color;
 extern int		g_show_hidden_root;
 extern int		g_is_file;
+extern int		g_dir_size_nohide;
 
 void	ls(char *path, int first);
 void	print_files(char **list);
@@ -39,6 +40,7 @@ int		time_cmp(const char *s1, const char *s2);
 void	free_tab(char **tab);
 int		array_len(char **arr);
 void	fsort(char **list);
+int		dir_size_nohide(char *dirs);
 
 void	qsort_tab(char **list, int len, int (*f)(const char *, const char *));
 

@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 13:49:39 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 14:29:01 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	cont(int i, int j, char ***done, int blocksize)
 		return ;
 	if (g_long_format == 1)
 	{
-		if (!g_is_file)
+		if (!g_is_file && !g_dir_size_nohide)
 			ft_printf("total %d\n", blocksize);
 		print_long(done, i, j);
 	}

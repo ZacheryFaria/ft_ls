@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 13:44:23 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 14:29:20 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define FIN {closedir(dir);free(list);return;}
 
 int g_is_file = 0;
+int g_dir_size_nohide = 0;
 
 char	**format_list(char **list)
 {
@@ -55,7 +56,7 @@ void	recurse(char **list)
 		if (isdir(list[i]) == 1 && ft_strcmp(basename(list[i]), ".")
 			&& ft_strcmp(basename(list[i]), "..") && islink(list[i]) != 1)
 		{
-			if (!(*list[i] == '.' && !g_show_hidden))
+			if (g_show_hidden || (!g_show_hidden && basename(list[i])[0] != '.'))
 			{
 				tmp = ft_strjoin(list[i], "/");
 				ls(tmp, 0);
@@ -83,11 +84,15 @@ void	eles(char *path, int first, char **list, DIR *dir)
 	if (g_recursive)
 		printpath(path, first);
 	list = format_list(list);
+	if (dir_size_nohide(path) == 0)
+		g_dir_size_nohide = 1;
 	print_files(list);
+	g_dir_size_nohide = 0;
 	i = 0;
 	if (g_recursive)
 		recurse(list);
 	free_tab(list);
+	free(list);
 }
 
 void	ls(char *path, int first)
