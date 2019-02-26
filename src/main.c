@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 18:30:24 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/26 12:03:34 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,36 @@ int g_color = 0;
 int	g_fsort = 0;
 int	g_show_hidden_root = 0;
 
+void	badopt(char opt)
+{
+	ft_putstr_fd("ft_ls: illegal option -- ", 2);
+	ft_putchar_fd(opt, 2);
+	ft_putchar_fd('\n', 2);
+	ft_putstr_fd("usage: ft_ls [-Rrlat] [file ...]\n", 2);
+	exit(1);
+}
+
 void	parse_flag(char *str)
 {
 	if (*str == 'R')
 		g_recursive = 1;
-	if (*str == 'r')
+	else if (*str == 'r')
 		g_reverse = 1;
-	if (*str == 'l')
+	else if (*str == 'l')
 		g_long_format = 1;
-	if (*str == 'a')
+	else if (*str == 'a')
 		g_show_hidden = 1;
-	if (*str == 't')
+	else if (*str == 't')
 		g_sort_time = 1;
-	if (*str == 'G')
+	else if (*str == 'G')
 		g_color = 1;
-	if (*str == 'A')
+	else if (*str == 'A')
 	{
 		g_show_hidden = 1;
 		g_show_hidden_root = 1;
 	}
+	else
+		badopt(*str);
 	str += 1;
 	if (*str)
 		parse_flag(str);
