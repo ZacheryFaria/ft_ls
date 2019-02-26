@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   long.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/26 12:56:14 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/26 13:57:13 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ char	**longflag(char *path, long *blocksize)
 		return (0);
 	}
 	i = -1;
-	*blocksize += (st.st_size / 512) + (st.st_size % 512 > 0);
+	if (g_show_hidden || (!g_show_hidden && basename(path)[0] != '.'))
+		*blocksize += (st.st_size / 512) + (st.st_size % 512 > 0);
 	while (++i < 7)
 	{
 		if (S_ISCHR(st.st_mode) || S_ISBLK(st.st_mode))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 13:40:24 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/26 13:44:23 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int g_is_file = 0;
 char	**format_list(char **list)
 {
 	qsort_tab(list, array_len(list), ft_strcmp);
-	if (!g_show_hidden)
-		list = flag_hide(list);
 	if (g_sort_time)
 		qsort_tab(list, array_len(list), time_cmp);
 	if (g_reverse)
@@ -57,9 +55,12 @@ void	recurse(char **list)
 		if (isdir(list[i]) == 1 && ft_strcmp(basename(list[i]), ".")
 			&& ft_strcmp(basename(list[i]), "..") && islink(list[i]) != 1)
 		{
-			tmp = ft_strjoin(list[i], "/");
-			ls(tmp, 0);
-			ft_strdel(&tmp);
+			if (!(*list[i] == '.' && !g_show_hidden))
+			{
+				tmp = ft_strjoin(list[i], "/");
+				ls(tmp, 0);
+				ft_strdel(&tmp);
+			}
 		}
 		i++;
 	}

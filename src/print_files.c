@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 12:45:37 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/26 13:49:39 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@ void	print_long(char ***done, int i, int j)
 	j = -1;
 	while (++j < i)
 	{
-		maxwidth = long_getmaxwidth(done);
-		ft_printpad(maxwidth[0], " ", 'r', done[j][0], 0);
-		ft_printpad(maxwidth[1], " ", 'r', done[j][1], 0);
-		ft_printpad(maxwidth[2], " ", 'l', done[j][2], 0);
-		ft_printpad(maxwidth[3], " ", 'l', done[j][3], 0);
-		ft_printpad(maxwidth[4], " ", 'r', done[j][4], 0);
-		ft_printpad(maxwidth[4], " ", 'r', done[j][5], 0);
-		ft_printpad(maxwidth[5], " ", 'r', done[j][6], 0);
-		if (done[j][10])
-			ft_printf("%s", basename(done[j][10]));
-		if (done[j][11])
-			ft_printf(" -> %s", done[j][11]);
-		ft_printf("\n");
-		free(maxwidth);
-		maxwidth = 0;
+		if (!(!g_show_hidden && basename(done[j][10])[0] == '.'))
+		{
+			maxwidth = long_getmaxwidth(done);
+			ft_printpad(maxwidth[0], " ", 'r', done[j][0], 0);
+			ft_printpad(maxwidth[1], " ", 'r', done[j][1], 0);
+			ft_printpad(maxwidth[2], " ", 'l', done[j][2], 0);
+			ft_printpad(maxwidth[3], " ", 'l', done[j][3], 0);
+			ft_printpad(maxwidth[4], " ", 'r', done[j][4], 0);
+			ft_printpad(maxwidth[4], " ", 'r', done[j][5], 0);
+			ft_printpad(maxwidth[5], " ", 'r', done[j][6], 0);
+			if (done[j][10])
+				ft_printf("%s", basename(done[j][10]));
+			if (done[j][11])
+				ft_printf(" -> %s", done[j][11]);
+			ft_printf("\n");
+			free(maxwidth);
+		}
 	}
 }
 
