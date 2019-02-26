@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 13:15:51 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 16:54:55 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <ft_ls.h>
 #include <stdlib.h>
 
+#define ERR {perror("ft_ls");return;}
 #define DIE {closedir(dir);free(list);return;}
 
 char	**format_list(char **list)
@@ -69,7 +70,8 @@ void	ls(char *path, int first)
 	int				len;
 
 	i = 0;
-	dir = opendir(path);
+	if ((dir = opendir(path)) <= 0)
+		ERR;
 	len = dir_size(path);
 	list = malloc(sizeof(char *) * (len + 1));
 	if (!dir)
