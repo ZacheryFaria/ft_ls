@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:04:40 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 10:37:03 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 17:00:24 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ char	long_filetypes(struct stat st)
 		return ('c');
 	if ((S_ISBLK(st.st_mode)))
 		return ('b');
+	if ((S_ISSOCK(st.st_mode)))
+		return ('s');
+	if ((S_ISFIFO(st.st_mode)))
+		return ('p');
 	return ('-');
 }

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/25 18:28:17 by awindham         ###   ########.fr       */
+=======
+/*   Updated: 2019/02/25 13:07:48 by zfaria           ###   ########.fr       */
+>>>>>>> 7f4b188fe5df719e41c67d0baee14d3c56e6f079
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +67,17 @@ int		parse_args(int argc, char **argv)
 			return (i - 1);
 		i++;
 	}
+<<<<<<< HEAD
 	return (i - 1);
+=======
+	return (-1);
+>>>>>>> 7f4b188fe5df719e41c67d0baee14d3c56e6f079
 }
 
 void	almost_ls(int flags, int argc, char **argv)
 {
 	char	*dir;
+<<<<<<< HEAD
 	int		m;
 
 	m = flags < argc - 2 ? 1 : 0;
@@ -99,6 +108,22 @@ int		main(int argc, char **argv)
 		ls("./", 1);
 	else
 		almost_ls(flags, argc, argv);
+=======
+	int		flags;
+
+	flags = 0;
+	dir = 0;
+	if (argc > 1)
+	{
+		flags = parse_args(argc, argv);
+		dir = argv[flags];
+	}
+	if (argc == 1 || flags == -1)
+		dir = ".";
+	if (dir[ft_strlen(dir) - 1] != '/')
+		dir = ft_strjoin(dir, "/");
+	ls(dir, 1);
+>>>>>>> 7f4b188fe5df719e41c67d0baee14d3c56e6f079
 	if (g_color)
 		print_color();
 	return (0);
