@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ls.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 12:29:51 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:54:22 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,36 @@ void	recurse(char **list)
 	}
 }
 
+void	eles(char *path, int first, char **list, DIR *dir)
+{
+	int				len;
+	struct dirent	*entry;
+	int				i;
+
+	i = 0;
+	len = dir_size(path);
+	list = malloc(sizeof(char *) * (len + 1));
+	while ((entry = readdir(dir)) != NULL)
+		list[i++] = ft_strjoin(path, entry->d_name);
+	closedir(dir);
+	list[len] = NULL;
+	free(entry);
+	if (g_recursive)
+		printpath(path, first);
+	list = format_list(list);
+	print_files(list);
+	i = 0;
+	if (g_recursive)
+		recurse(list);
+	free_tab(list);
+}
+
 void	ls(char *path, int first)
 {
 	DIR				*dir;
-	struct dirent	*entry;
 	char			**list;
-	int				i;
-	int				len;
 
-	i = 0;
+	list = 0;
 	if ((dir = opendir(path)) <= 0)
 	{
 		g_is_file = 1;
@@ -85,21 +106,5 @@ void	ls(char *path, int first)
 		return ;
 	}
 	else
-	{
-		len = dir_size(path);
-		list = malloc(sizeof(char *) * (len + 1));
-		while ((entry = readdir(dir)) != NULL)
-			list[i++] = ft_strjoin(path, entry->d_name);
-		closedir(dir);
-		list[len] = NULL;
-		free(entry);
-		if (g_recursive)
-			printpath(path, first);
-		list = format_list(list);
-		print_files(list);
-		i = 0;
-		if (g_recursive)
-			recurse(list);
-		free_tab(list);
-	}
+		eles(path, first, list, dir);
 }

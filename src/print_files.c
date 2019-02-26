@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
+/*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 12:33:12 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:45:37 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,20 @@ void	print(int i, int j, char ***done)
 	}
 }
 
+void	cont(int i, int j, char ***done, int blocksize)
+{
+	if (i == 0)
+		return ;
+	if (g_long_format == 1)
+	{
+		if (!g_is_file)
+			ft_printf("total %d\n", blocksize);
+		print_long(done, i, j);
+	}
+	else
+		print(i, j, done);
+}
+
 void	print_files(char **list)
 {
 	char	***done;
@@ -86,23 +100,11 @@ void	print_files(char **list)
 		if (done[i] == 0)
 		{
 			free(done);
-			done = 0;
 			return ;
 		}
 	}
 	done[i] = 0;
 	j = 0;
-	if (i == 0)
-		return ;
-	if (g_long_format == 1)
-	{
-		if (!g_is_file)
-			ft_printf("total %d\n", blocksize);
-		print_long(done, i, j);
-	}
-	else
-		print(i, j, done);
-	i--;
+	cont(i, j, done, blocksize);
 	freeshit(done);
-	done = 0;
 }
