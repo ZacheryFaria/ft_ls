@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/02/25 13:07:48 by zfaria           ###   ########.fr       */
-=======
-/*   Updated: 2019/02/25 17:30:17 by awindham         ###   ########.fr       */
->>>>>>> 306c27bb809e2da3ac94af4e5985b6c514cc4716
+/*   Created: 2019/02/25 17:32:49 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/25 17:32:51 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +75,6 @@ int		main(int argc, char **argv)
 	flags = 0;
 	dir = 0;
 	if (argc > 1)
-<<<<<<< HEAD
-	{
-		flags = parse_args(argc, argv);
-		dir = argv[flags];
-=======
 		flags = parse_args(argc, argv);
 	multi_arg = flags < argc - 1 ? 1 : 0;
 	while (flags < argc)
@@ -100,7 +91,6 @@ int		main(int argc, char **argv)
 		flags++;
 		if (flags < argc)
 			ft_printf("\n");
->>>>>>> 306c27bb809e2da3ac94af4e5985b6c514cc4716
 	}
 	if (argc == 1 || flags == -1)
 		dir = ".";
