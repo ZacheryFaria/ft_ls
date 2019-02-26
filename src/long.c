@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/26 12:15:32 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:32:12 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ char	**longflag(char *path, long *blocksize)
 	char			**lflag;
 
 	lflag = malloc(12 * sizeof(lflag));
-	lstat(path, &st);
+	if (lstat(path, &st))
+	{
+		perror("ft_ls");
+		return (0);
+	}
 	i = -1;
 	*blocksize += st.st_size / 512;
 	*blocksize += (st.st_size % 512 > 0);

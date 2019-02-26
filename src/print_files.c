@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 12:14:13 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:33:12 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,23 @@ void	print_files(char **list)
 	done = malloc(4096 * sizeof(done));
 	i = -1;
 	while (list[++i])
+	{
 		done[i] = longflag(list[i], &blocksize);
+		if (done[i] == 0)
+		{
+			free(done);
+			done = 0;
+			return ;
+		}
+	}
 	done[i] = 0;
 	j = 0;
 	if (i == 0)
 		return ;
 	if (g_long_format == 1)
 	{
-		ft_printf("total %d\n", blocksize);
+		if (!g_is_file)
+			ft_printf("total %d\n", blocksize);
 		print_long(done, i, j);
 	}
 	else

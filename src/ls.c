@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 12:11:05 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:29:51 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #define AND ft_printf("ft_ls: ");ft_printf("%s: ", path);perror("");
 #define DIE return;}
 #define FIN {closedir(dir);free(list);return;}
+
+int g_is_file = 0;
 
 char	**format_list(char **list)
 {
@@ -73,20 +75,31 @@ void	ls(char *path, int first)
 
 	i = 0;
 	if ((dir = opendir(path)) <= 0)
-		ERR AND DIE
-	len = dir_size(path);
-	list = malloc(sizeof(char *) * (len + 1));
-	while ((entry = readdir(dir)) != NULL)
-		list[i++] = ft_strjoin(path, entry->d_name);
-	closedir(dir);
-	list[len] = NULL;
-	free(entry);
-	if (g_recursive)
-		printpath(path, first);
-	list = format_list(list);
-	print_files(list);
-	i = 0;
-	if (g_recursive)
-		recurse(list);
-	free_tab(list);
+	{
+		g_is_file = 1;
+		path[ft_strlen(path) - 1] = 0;
+		list = malloc(8);
+		list[0] = path;
+		list[1] = 0;
+		print_files(list);
+		return ;
+	}
+	else
+	{
+		len = dir_size(path);
+		list = malloc(sizeof(char *) * (len + 1));
+		while ((entry = readdir(dir)) != NULL)
+			list[i++] = ft_strjoin(path, entry->d_name);
+		closedir(dir);
+		list[len] = NULL;
+		free(entry);
+		if (g_recursive)
+			printpath(path, first);
+		list = format_list(list);
+		print_files(list);
+		i = 0;
+		if (g_recursive)
+			recurse(list);
+		free_tab(list);
+	}
 }
