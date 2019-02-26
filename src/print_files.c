@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 17:20:21 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/25 18:02:42 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,18 @@ void	print_long(char ***done, int i, int j)
 	}
 }
 
-void	freeshit(char ***done, int i)
+void	freeshit(char ***done)
 {
-	while (i >= 0)
+	int i;
+
+	i = 0;
+	while (done[i])
 	{
 		free_tab(done[i]);
 		if (done[i])
 			free(done[i]);
 		done[i] = 0;
-		i--;
+		i++;
 	}
 	if (done)
 		free(done);
@@ -65,7 +68,7 @@ void	print_files(char **list)
 	done = malloc(4096 * sizeof(done));
 	i = -1;
 	while (list[++i])
-		done[i] = longflag(ft_strdup(list[i]), &blocksize);
+		done[i] = longflag(list[i], &blocksize);
 	done[i] = 0;
 	j = 0;
 	if (i == 0)
@@ -87,6 +90,6 @@ void	print_files(char **list)
 				ft_printf("%s\n", basename(done[j - 1][10]));
 		}
 	i--;
-	freeshit(done, i);
+	freeshit(done);
 	done = 0;
 }

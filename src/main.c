@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 17:32:49 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 17:32:51 by zfaria           ###   ########.fr       */
+/*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
+/*   Updated: 2019/02/25 13:07:48 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,13 @@ int		main(int argc, char **argv)
 {
 	char	*dir;
 	int		flags;
-	int		multi_arg;
 
 	flags = 0;
 	dir = 0;
 	if (argc > 1)
-		flags = parse_args(argc, argv);
-	multi_arg = flags < argc - 1 ? 1 : 0;
-	while (flags < argc)
 	{
-		if (multi_arg)
-			ft_printf("%s:\n", argv[flags]);
-		if (argc == 1 || flags == 0)
-			dir = ".";
-		else
-			dir = argv[flags];
-		if (dir[ft_strlen(dir) - 1] != '/')
-			dir = ft_strjoin(dir, "/");
-		ls(dir, 1);
-		flags++;
-		if (flags < argc)
-			ft_printf("\n");
+		flags = parse_args(argc, argv);
+		dir = argv[flags];
 	}
 	if (argc == 1 || flags == -1)
 		dir = ".";
