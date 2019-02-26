@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 17:19:22 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 17:30:17 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,21 @@ int		main(int argc, char **argv)
 {
 	char	*dir;
 	int		flags;
+	int		multi_arg;
 
 	flags = 0;
 	dir = 0;
 	if (argc > 1)
 		flags = parse_args(argc, argv);
+	multi_arg = flags < argc - 1 ? 1 : 0;
 	while (flags < argc)
 	{
+		if (multi_arg)
+			ft_printf("%s:\n", argv[flags]);
 		if (argc == 1 || flags == 0)
 			dir = ".";
 		else
-			dir = argv[flags - 1];
+			dir = argv[flags];
 		if (dir[ft_strlen(dir) - 1] != '/')
 			dir = ft_strjoin(dir, "/");
 		ls(dir, 1);

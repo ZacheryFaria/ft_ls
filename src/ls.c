@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 17:17:33 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 17:24:31 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 #define ERR {path[ft_strlen(path) - 2] = 0;
-#define AND {ft_printf("ft_ls: ");ft_printf("%s: ", path);perror("");}
+#define AND ft_printf("ft_ls: ");ft_printf("%s: ", path);perror("");
 #define DIE return;}
 #define FIN {closedir(dir);free(list);return;}
 
