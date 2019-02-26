@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/26 14:14:45 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 14:55:39 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ void	parse_flag(char *str)
 		g_sort_time = 1;
 	else if (*str == 'G')
 		g_color = 1;
-	else if (*str == 'A')
+	else if (*str == '1')
 	{
-		g_show_hidden = 1;
-		g_show_hidden_root = 1;
 	}
 	else
 		badopt(*str);
