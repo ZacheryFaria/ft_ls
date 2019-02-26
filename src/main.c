@@ -6,7 +6,7 @@
 /*   By: awindham <awindham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 12:39:30 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 17:30:17 by awindham         ###   ########.fr       */
+/*   Updated: 2019/02/25 18:28:17 by awindham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,38 +60,45 @@ int		parse_args(int argc, char **argv)
 		if (argv[i][0] == '-')
 			parse_flag(argv[i] + 1);
 		else
-			return (i);
+			return (i - 1);
 		i++;
 	}
-	return (0);
+	return (i - 1);
+}
+
+void	almost_ls(int flags, int argc, char **argv)
+{
+	char	*dir;
+	int		m;
+
+	m = flags < argc - 2 ? 1 : 0;
+	while (flags < argc - 1)
+	{
+		if (m)
+			ft_printf("%s:\n", argv[flags + 1]);
+		dir = argv[flags + 1];
+		if (dir[ft_strlen(dir) - 1] != '/')
+			dir = ft_strjoin(dir, "/");
+		ls(dir, 1);
+		flags++;
+		if (flags < argc - 1)
+			ft_putendl("");
+	}
 }
 
 int		main(int argc, char **argv)
 {
 	char	*dir;
 	int		flags;
-	int		multi_arg;
 
 	flags = 0;
 	dir = 0;
 	if (argc > 1)
 		flags = parse_args(argc, argv);
-	multi_arg = flags < argc - 1 ? 1 : 0;
-	while (flags < argc)
-	{
-		if (multi_arg)
-			ft_printf("%s:\n", argv[flags]);
-		if (argc == 1 || flags == 0)
-			dir = ".";
-		else
-			dir = argv[flags];
-		if (dir[ft_strlen(dir) - 1] != '/')
-			dir = ft_strjoin(dir, "/");
-		ls(dir, 1);
-		flags++;
-		if (flags < argc)
-			ft_printf("\n");
-	}
+	if (argc == 1 || 1 == argc - flags)
+		ls("./", 1);
+	else
+		almost_ls(flags, argc, argv);
 	if (g_color)
 		print_color();
 	return (0);
