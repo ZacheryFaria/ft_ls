@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 18:02:42 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:14:13 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	print_long(char ***done, int i, int j)
 		ft_printpad(maxwidth[4], " ", 'r', done[j][4], 0);
 		ft_printpad(maxwidth[4], " ", 'r', done[j][5], 0);
 		ft_printpad(maxwidth[5], " ", 'r', done[j][6], 0);
-
 		if (done[j][10])
 			ft_printf("%s", basename(done[j][10]));
 		if (done[j][11])
@@ -57,6 +56,20 @@ void	freeshit(char ***done)
 		free(done);
 }
 
+void	print(int i, int j, char ***done)
+{
+	while (++j <= i)
+	{
+		if (!g_show_hidden && !g_fsort)
+		{
+			if (basename(done[j - 1][10])[0] != '.')
+				ft_printf("%s\n", basename(done[j - 1][10]));
+		}
+		else
+			ft_printf("%s\n", basename(done[j - 1][10]));
+	}
+}
+
 void	print_files(char **list)
 {
 	char	***done;
@@ -79,16 +92,7 @@ void	print_files(char **list)
 		print_long(done, i, j);
 	}
 	else
-		while (++j <= i)
-		{
-			if (!g_show_hidden && !g_fsort)
-			{
-				if (basename(done[j - 1][10])[0] != '.')
-					ft_printf("%s\n", basename(done[j - 1][10]));
-			}
-			else
-				ft_printf("%s\n", basename(done[j - 1][10]));
-		}
+		print(i, j, done);
 	i--;
 	freeshit(done);
 	done = 0;

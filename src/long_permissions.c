@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:16:00 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 17:05:31 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:10:04 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	check_sticky_user(int mode)
 		else
 			return ('-');
 	}
-
 }
 
 char	check_sticky_group(int mode)

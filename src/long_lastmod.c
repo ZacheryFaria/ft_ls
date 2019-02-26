@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 14:49:24 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/25 15:52:27 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:11:21 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*long_lastmod(struct stat st)
 	time(&curr);
 	file_time = st.st_mtimespec.tv_sec;
 	done = ctime(&st.st_mtimespec.tv_sec);
-	done += 4;	
+	done += 4;
 	if (file_time - curr > SIX || curr - file_time > SIX)
 	{
 		ft_memmove(done + 7, done + 15, 5);

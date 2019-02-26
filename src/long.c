@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/25 14:49:53 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/26 12:15:32 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,24 @@ char	*(*g_aay[7])(struct stat st) =
 	long_lastmod
 };
 
+void	xattr(char *path, char **lflag, int i)
+{
+	lflag[10] = path;
+	lflag[11] = 0;
+	if (lflag[0][0] == 'l')
+		lflag[11] = long_link(path);
+	lflag[i] = 0;
+	lflag[0][10] = listxattr(path, NULL, 0, XATTR_NOFOLLOW) > 0 ?
+		'@' : ' ';
+}
+
 char	**longflag(char *path, long *blocksize)
 {
 	int				i;
 	struct stat		st;
-	char			**shit;
+	char			**lflag;
 
-	shit = malloc(12 * sizeof(shit));
+	lflag = malloc(12 * sizeof(lflag));
 	lstat(path, &st);
 	i = -1;
 	*blocksize += st.st_size / 512;
@@ -52,20 +63,14 @@ char	**longflag(char *path, long *blocksize)
 	while (++i < 7)
 	{
 		if (S_ISCHR(st.st_mode) || S_ISBLK(st.st_mode))
-			shit[i] = g_aay[i](st);
+			lflag[i] = g_aay[i](st);
 		else
 		{
 			if (i == 6)
 				break ;
-			shit[i] = (*g_ay[i])(st);
+			lflag[i] = (*g_ay[i])(st);
 		}
 	}
-	shit[10] = path;
-	shit[11] = 0;
-	if (shit[0][0] == 'l')
-		shit[11] = long_link(path);
-	shit[i] = 0;
-	shit[0][10] = listxattr(path, NULL, 0, XATTR_NOFOLLOW) > 0 ?
-		'@' : ' ';
-	return (shit);
+	xattr(path, lflag, i);
+	return (lflag);
 }
