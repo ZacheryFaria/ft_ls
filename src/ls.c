@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 14:29:20 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:07:36 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <dirent.h>
 #include <ft_ls.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #define ERR {path[ft_strlen(path) - 1] = 0;
 #define AND ft_printf("ft_ls: ");ft_printf("%s: ", path);perror("");
@@ -25,7 +26,7 @@ int g_dir_size_nohide = 0;
 
 char	**format_list(char **list)
 {
-	qsort_tab(list, array_len(list), ft_strcmp);
+	qsort_tab(list, array_len(list), strcmp);
 	if (g_sort_time)
 		qsort_tab(list, array_len(list), time_cmp);
 	if (g_reverse)
@@ -56,7 +57,8 @@ void	recurse(char **list)
 		if (isdir(list[i]) == 1 && ft_strcmp(basename(list[i]), ".")
 			&& ft_strcmp(basename(list[i]), "..") && islink(list[i]) != 1)
 		{
-			if (g_show_hidden || (!g_show_hidden && basename(list[i])[0] != '.'))
+			if (g_show_hidden || (!g_show_hidden
+				&& basename(list[i])[0] != '.'))
 			{
 				tmp = ft_strjoin(list[i], "/");
 				ls(tmp, 0);
@@ -103,6 +105,13 @@ void	ls(char *path, int first)
 	list = 0;
 	if ((dir = opendir(path)) <= 0)
 	{
+		if (errno == 13)
+		{
+			ft_printf("\n%s:\n", path);
+			path[ft_strlen(path) - 1] = 0;
+			ft_printf("ft_ls: %s: %s\n", basename(path), strerror(errno));
+			return ;
+		}
 		g_is_file = 1;
 		path[ft_strlen(path) - 1] = 0;
 		list = malloc(8);

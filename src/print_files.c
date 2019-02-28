@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/27 19:27:08 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:06:26 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	print_long(char ***done, int i, int j)
 {
 	int *maxwidth;
 
-	j = -1;
 	while (++j < i)
 	{
 		if (!(!g_show_hidden && basename(done[j][10])[0] == '.'))
@@ -84,7 +83,7 @@ void	cont(int i, int j, char ***done, int blocksize)
 	{
 		if (!g_is_file && !g_dir_size_nohide)
 			ft_printf("total %d\n", blocksize);
-		print_long(done, i, j);
+		print_long(done, i, -1);
 	}
 	else
 		print(i, j, done);

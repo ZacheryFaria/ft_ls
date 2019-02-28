@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 15:48:46 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 14:18:17 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:07:40 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	largest(char ***s, int i)
 	j = 0;
 	while (s[j])
 	{
-		if (done < (int)ft_strlen(s[j][i]) && (g_show_hidden || 
+		if (done < (int)ft_strlen(s[j][i]) && (g_show_hidden ||
 			(!g_show_hidden && basename(s[j][10])[0] != '.')))
 			done = (int)ft_strlen(s[j][i]);
 		j++;

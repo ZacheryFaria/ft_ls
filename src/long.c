@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/27 19:22:18 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:11:08 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	xattr(char *path, char **lflag, int i)
 		'@' : ' ';
 }
 
+char	**per()
+{
+	perror("ft_ls");
+	return (0);
+}
+
 char	**longflag(char *path, long *blocksize)
 {
 	int				i;
@@ -58,8 +64,7 @@ char	**longflag(char *path, long *blocksize)
 	lflag = malloc(12 * sizeof(lflag));
 	if (lstat(path, &st))
 	{
-		perror("ft_ls");
-		return (0);
+		return (per());
 	}
 	i = -1;
 	if (g_show_hidden || (!g_show_hidden && basename(path)[0] != '.'))

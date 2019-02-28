@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 12:37:08 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/26 15:14:51 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:05:34 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int		time_cmp(const char *s1, const char *s2)
 	if (diff == 0)
 	{
 		if (diffn == 0)
-			return ft_strcmp(s1, s2);
+			return (ft_strcmp(s1, s2));
 		else
-			return (diffn);	
+			return (diffn);
 	}
 	return (diff);
 }
