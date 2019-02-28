@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/28 12:22:03 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/28 12:23:05 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	ls(char *path, int first)
 		{
 			if (errno == 13)
 				ft_printf("\n%s:\n", path);
-				path[ft_strlen(path) - 1] = 0;			
+			path[ft_strlen(path) - 1] = 0;
 			ft_printf("ft_ls: %s: %s\n", basename(path), strerror(errno));
 			return ;
 		}
