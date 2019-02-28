@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/28 12:23:05 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/28 13:11:49 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 #include <ft_ls.h>
 #include <stdlib.h>
 #include <errno.h>
-
-#define ERR {path[ft_strlen(path) - 1] = 0;
-#define AND ft_printf("ft_ls: ");ft_printf("%s: ", path);perror("");
-#define DIE return;}
-#define FIN {closedir(dir);free(list);return;}
 
 int g_is_file = 0;
 int g_dir_size_nohide = 0;
