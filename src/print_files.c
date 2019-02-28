@@ -6,13 +6,14 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:27 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/26 14:43:54 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 19:27:08 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 #include <stdlib.h>
 #include <libft.h>
+#include <errno.h>
 
 void	print_long(char ***done, int i, int j)
 {
@@ -97,7 +98,7 @@ void	print_files(char **list)
 	long	blocksize;
 
 	blocksize = 0;
-	done = malloc(4096 * sizeof(done));
+	done = malloc((array_len(list) + 1) * sizeof(done));
 	i = -1;
 	while (list[++i])
 	{
