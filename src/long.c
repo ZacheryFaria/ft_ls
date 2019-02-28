@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 13:12:05 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/27 21:05:01 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/28 11:52:38 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**longflag(char *path, long *blocksize)
 	lstat(path, &st);
 	i = -1;
 	if (g_show_hidden || (!g_show_hidden && basename(path)[0] != '.'))
-		*blocksize += (st.st_size / 512) + (st.st_size % 512 > 0);
+		*blocksize += st.st_blocks;
 	while (++i < 7)
 	{
 		if (S_ISCHR(st.st_mode) || S_ISBLK(st.st_mode))
