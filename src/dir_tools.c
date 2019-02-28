@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 12:12:03 by zfaria            #+#    #+#             */
-/*   Updated: 2019/02/26 14:23:33 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:48:10 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		dir_size(char *dirs)
 	dir = opendir(dirs);
 	if (!dir)
 		return (0);
-	while ((entry = readdir(dir)) != NULL)
+	while ((entry = readdir(dir)) != NULL && entry->d_name[0] != 0)
 		size++;
 	closedir(dir);
 	return (size);

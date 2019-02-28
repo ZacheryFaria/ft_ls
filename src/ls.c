@@ -6,7 +6,7 @@
 /*   By: zfaria <zfaria@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:46:34 by awindham          #+#    #+#             */
-/*   Updated: 2019/02/27 20:07:36 by zfaria           ###   ########.fr       */
+/*   Updated: 2019/02/27 20:55:09 by zfaria           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	eles(char *path, int first, char **list, DIR *dir)
 	while ((entry = readdir(dir)) != NULL)
 		list[i++] = ft_strjoin(path, entry->d_name);
 	closedir(dir);
-	list[len] = NULL;
+	list[i] = NULL;
 	free(entry);
 	if (g_recursive)
 		printpath(path, first);
